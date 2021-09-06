@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <title>JS在线打鼓</title>
+</head>
+<body>
+    <div class="keys">
+        <!-- 下面是鼓的9个部件 -->
+        <div data-key="65" class="key">
+            <kbd>A</kbd>
+            <span class="sound">clap</span>
+        </div>
+        
+        <div data-key="83" class="key">
+            <kbd>S</kbd>
+            <span class="sound">hihat</span>
+        </div>
+        
+        <div data-key="68" class="key">
+            <kbd>D</kbd>
+            <span class="sound">kick</span>
+        </div>
+        
+        <div data-key="70" class="key">
+            <kbd>F</kbd>
+            <span class="sound">openhat</span>
+        </div>
+        
+        <div data-key="71" class="key">
+            <kbd>G</kbd>
+            <span class="sound">boom</span>
+        </div>
+        
+        <div data-key="72" class="key">
+            <kbd>H</kbd>
+            <span class="sound">ride</span>
+        </div>
+        
+        <div data-key="74" class="key">
+            <kbd>J</kbd>
+            <span class="sound">snare</span>
+        </div>
+        
+        <div data-key="75" class="key">
+            <kbd>K</kbd>
+            <span class="sound">tom</span>
+        </div>
+        
+        <div data-key="76" class="key">
+            <kbd>L</kbd>
+            <span class="sound">tink</span>
+        </div>
+    </div>
+
+    <!-- 使用data-key来链接音频文件与按键 -->
+    <audio data-key="65" src="sounds/clap.wav"></audio> <!-- #2  -->
+    <audio data-key="83" src="sounds/hihat.wav"></audio>
+    <audio data-key="68" src="sounds/kick.wav"></audio>
+    <audio data-key="70" src="sounds/openhat.wav"></audio>
+    <audio data-key="71" src="sounds/boom.wav"></audio>
+    <audio data-key="72" src="sounds/ride.wav"></audio>
+    <audio data-key="74" src="sounds/snare.wav"></audio>
+    <audio data-key="75" src="sounds/tom.wav"></audio>
+    <audio data-key="76" src="sounds/tink.wav"></audio>
+  
+    <!-- 准备开始写脚本文件 -->
+    <script type="text/javascript">
+        // 1 监听键盘动作
+        window.addEventListener('keydown', playSound);
+        
+        // 2.建立playSound 用于播放对应的音频
+        function playSound(e){
+            // 01 利用传入的e.keyCode来获得对应的audio标签
+            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            // 02 同理 获取div标签
+            const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+            // 03 如果传入的e.keyCode没有对应的audio标签 就退出 没有对应的音频文件还咋发声嘛 赶紧的退出
+            if(!audio){
+                return;
+            }
+            // 04 使对应（被触发）的div加上playing模式 从而产生对应的点击特效 也就是出现一个黄色的框框
+            // 在这一步 框框还不能被消除掉 需要用到transitionend listener与removeTransition函数来做到这一点
+            key.classList.add('playing') //#1 回傳element的class值(陣列)
+            // 05 使对应的audio播放时间为0 
+            audio.currentTime = 0;
+            // 06 播放对应的音频
+            audio.play();
+        }
+        
+        // 3 新增transitionend listener 
+        // 用于在点击特效结束时（transitionend)，呼叫removeTransition
+        // 这里有个问题 如果按住键盘不放 特效无法消失 会一直亮着。。
+
+        // #4 將一個物件或是字串轉為陣列格式的語法
+        const keys = Array.from(document.querySelectorAll('.key'));
+        // #3 下面用到了forEach循环与箭头函数
+        // 前者可以简单地迭代获取数组的每个元素
+        //  后者可以简单地实现一个函数 key = > xxx 等价于 function(key){xxx}
+        // 另外这个键盘监听事件再次出现了
+        keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+        window.addEventListener('keydown', playSound);
+        
+        // 4 建立removeTransition函数 用来移除点击特效
+        function removeTransition(e){
+            // 判断传入的propertyName是否为transform 如果不是 就退出
+            // 如果是transform 则移除playing模式 不再发出声音
+            if(e.propertyName !== 'transform'){
+                return;
+            }
+            e.target.classList.remove('playing');
+        }
+       
+    </script>
+</body>
+</html>
