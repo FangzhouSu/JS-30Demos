@@ -71,14 +71,16 @@
     <!-- 准备开始写脚本文件 -->
     <script type="text/javascript">
         // 1 监听键盘动作
-        window.addEventListener('keydown', playSound);
+        // window.addEventListener('keydown', playSound);
         
         // 2.建立playSound 用于播放对应的音频
         function playSound(e){
-            // 01 利用传入的e.keyCode来获得对应的audio标签
-            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            // 01 利用传入的e.keyCode来获得对应的audio标签 
+            // 利用这行代码可以选择并行地选择两个鼓来演奏！（感谢前辈的思路）
+            let keyNo = e.keyCode || this.getAttribute('data-key');//add
+            const audio = document.querySelector(`audio[data-key="${keyNo}"]`);
             // 02 同理 获取div标签
-            const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+            const key = document.querySelector(`div[data-key="${keyNo}"]`);
             // 03 如果传入的e.keyCode没有对应的audio标签 就退出 没有对应的音频文件还咋发声嘛 赶紧的退出
             if(!audio){
                 return;
@@ -98,12 +100,15 @@
 
         // #4 將一個物件或是字串轉為陣列格式的語法
         const keys = Array.from(document.querySelectorAll('.key'));
+        const listenTarget = ['window', 'click']
         // #3 下面用到了forEach循环与箭头函数
         // 前者可以简单地迭代获取数组的每个元素
         //  后者可以简单地实现一个函数 key = > xxx 等价于 function(key){xxx}
         // 另外这个键盘监听事件再次出现了
         keys.forEach(key => key.addEventListener('transitionend', removeTransition));
         window.addEventListener('keydown', playSound);
+        // 9-7 新增了 点击即可打鼓的效果
+        keys.forEach(key => key.addEventListener('click', playSound)); //add
         
         // 4 建立removeTransition函数 用来移除点击特效
         function removeTransition(e){

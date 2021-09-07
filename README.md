@@ -8,6 +8,15 @@
 
 打算在之后进行二刷 完成 “知其然更要知其所以然！”
 
+
+
+练习注意
+
+- 练习前把index-START.html的代码粘过来即可 
+- index.html包含了我根据前辈笔记标注的注释 比较齐全
+
+
+
 另外感谢下面两位前辈做好的笔记 
 
 
@@ -32,3 +41,4 @@ https://fangzhousu.github.io/JS-30Demos/01_JS-Drum-Kit/index.html
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/92a51e30269c400f9cf5a96bf9685a4f.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5pWy5Luj56CB55qE5bCP5o-Q55C05omL,size_20,color_FFFFFF,t_70,g_se,x_16)
 
+## Demo02
