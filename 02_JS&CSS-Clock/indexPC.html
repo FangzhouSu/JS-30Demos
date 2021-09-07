@@ -6,7 +6,14 @@
   <title>JS + CSS Clock</title>
 </head>
 <body>
-
+  <div class="motto">
+      追求极致
+      务实敢为
+      开放谦逊
+      坦诚清晰
+      始终创业
+      多元兼容
+  </div>
   <div class="clock">
     <div class="clock-face">
       <div class="hand hour-hand"></div>
@@ -16,6 +23,16 @@
   </div>
   
   <style>
+    /* 让背景图片暗一些 */
+    html::before { 
+    content: ''; 
+    display: block; 
+    position: absolute; 
+    background-color: #000; 
+    opacity: 0.5; 
+    width: 100%; 
+    height: 100%; 
+} 
 
     html {
       background: url(ByteDance.jpg);
@@ -35,6 +52,21 @@
       align-items: center;
     }
 
+    .motto {
+      position:absolute;
+      bottom: 1.5rem;
+      margin:auto;
+      padding:40px;
+      width:116rem;
+      height:20px;
+
+      font-size: 36px;
+      font-style:oblique;
+
+      background-image:-webkit-linear-gradient(bottom,#467af3, #29bcbe, #6cd8d1); 
+      -webkit-background-clip:text;  /* 用文本剪辑背景，用渐变背景作为颜色填充文本。 */
+      -webkit-text-fill-color:transparent; /* 使用透明颜色填充文本。 */
+    }
 
     .clock {
       width: 30rem;
