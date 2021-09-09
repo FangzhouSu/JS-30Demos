@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="../favicon.ico">
+  <title>在线图片修饰器 使用JS修饰CSS变量</title>
+</head>
+<body>
+  <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
+
+  <div class="controls">
+    <label for="spacing">Spacing:</label>
+    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+
+    <label for="blur">Blur:</label>
+    <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+
+    <label for="base">Base Color</label>
+    <input id="base" type="color" name="base" value="#ffc600">
+  </div>
+
+  <!-- 这里感觉可以加一个图片上传的功能 就是一个功能型网站了 -->
+  <img src="../BD_blue&white.jpg">
+
+  <style>
+    /* 使用CSS variable定义CSS的特效 （模糊 加边框 变换颜色） 
+    有点像sass的感觉*/
+    :root{
+      --base: #ffc600;
+      --spacing: 10px;
+      --blur: 10px;
+      --grayscale: 0%;
+    }
+
+    img {
+      padding: var(--spacing);/* 加边框 */
+      background: var(--base);/* 加图片 */
+      filter: blur(var(--blur)) grayscale(var(--grayscale));/* 滤镜功能 */
+      /* 因为选取的图片忒大了 缩了一下尺寸~ */
+      width: 66%;
+    }
+
+    /* .h1  放在这里纪念一下 把hl当成h1 ！！！！！！！！！！！！！！！！！！！！！！！！！
+    {
+      color: var(--base);
+    } */
+    .hl {
+      color: var(--base);
+    }
+
+    /*
+      misc styles, nothing to do with CSS variables
+    */
+
+    body {
+      text-align: center;
+      background: #193549;
+      color: white;
+      font-family: 'helvetica neue', sans-serif;
+      font-weight: 100;
+      font-size: 50px;
+    }
+
+    .controls {
+      margin-bottom: 50px;
+    }
+    
+    input {
+      width:100px;
+    }
+  </style>
+
+  <script>
+    const inputs = document.querySelectorAll('.controls input');
+
+    function handleUpdate(){
+      const suffix = this.dataset.sizing || '';
+      // 下面这句用于改变CSS样式
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+    }
+
+    // 利用addEventListener来获取 拖动进度条时的变化 将新的进度条对应的值更新到CSS变量中
+    // 可以及时调整效果！
+    inputs.forEach(input => input.addEventListener('change', handleUpdate));
+    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));//用于感应拖动条 获得更新的值
+  </script>
+
+</body>
+</html>
