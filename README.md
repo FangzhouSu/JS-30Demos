@@ -52,3 +52,14 @@ https://fangzhousu.github.io/JS-30Demos/02_JS&CSS-Clock/index-billSu.html
 https://fangzhousu.github.io/JS-30Demos/03_CSS-Variables-Change/index-billSu.html
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/116c73d90dfe4623bbd1b2acba34d1b5.png)
+
+## Demo04
+
+强推！这里的数组方法真的都超实用的！
+
+https://fangzhousu.github.io/JS-30Demos/04_Array-Practice/index-billSu.html
+
+![请添加图片描述](https://img-blog.csdnimg.cn/4110b907a980492484e11fded1ba6f44.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5pWy5Luj56CB55qE5bCP5o-Q55C05omL,size_20,color_FFFFFF,t_70,g_se,x_16)
+
+
+

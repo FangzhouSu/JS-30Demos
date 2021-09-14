@@ -134,25 +134,24 @@
 
         </tbody>
     </table>
-    <h2>1.筛选出于1500-1599年间出生的发明家</h2><br/>
-    <div id="demo1">这里打开控制台 会以表格形式打印对应发明家的对象</div>
-    <h2>2.将发明家们的fisrtName和lastName组合成一个阵列</h2><br/>
+    <h2>1.筛选出于1500-1599年间出生的发明家</h2>
+    <div id="demo1"><em>打开控制台 看输出的表格！</em> 😊</div>
+    <h2>2.将发明家们的fisrtName和lastName组合成一个阵列</h2>
     <div id="demo2"></div>
-    <h2>3.依据生日由大到小排列所有的inventor</h2><br/>
-    <div id="demo3"></div>
-    <h2>4.将所有发明家的在世世界求和</h2><br/>
+    <h2>3.依据生日由大到小排列所有的发明家</h2>
+    <div id="demo3"><em>打开控制台 看输出的表格！</em> 😊</div>
+    <h2>4.将所有发明家的在世时间求和</h2>
     <div id="demo4"></div>
-    <h2>5.依据年龄由大到小排列所有的发明家</h2><br/>
-    <div id="demo5"></div>
+    <h2>5.依据年龄由大到小排列所有的发明家</h2>
+    <div id="demo5"><em>打开控制台 看输出！</em> 😊</div>
     <h2>6.列出维基百科中巴黎所有包含'de'的路名</h2>
-    <h3>（在wiki中通过querySelectorAll来选取资料做筛选）</h3><br/>
-    <div id="demo6"></div>
-    <h2>7.依据lastName排序所有人的资料</h2><br/>
-    <div id="demo7"></div>
-    <h2>8.分别计算data内每个种类的数量</h2><br/>
-    <div id="demo8"></div>
+    <h3>（在wiki中通过querySelectorAll来选取资料做筛选）</h3>
+    <div id="demo6">有墙打不开 & 那个获取的方法我没老看懂的</div>
+    <h2>7.依据lastName排序所有“people”的资料 按照字母表的顺序 从前往后~(大写在小写前面哦）</h2>
+    <div id="demo7"><em>打开控制台 看输出！</em> 😊</div>
+    <h2>8.分别计算给出的data数组内每个种类的数量 返回一个对象</h2>
+    <div id="demo8"><em>打开控制台 看输出！</em> 😊</div>
 
-    <p><em>打开控制台 看每道题的答案！</em> 😊</p>    
     <script>
     // Get your shorts on - this is an array workout!
     // ## Array Cardio Day 1
@@ -174,7 +173,7 @@
       { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 }
     ];
 
-    const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black, Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
+    const people = ['AA姓-lastname,名-firstname - 虽然感觉有点怪 但就是这样','aaaa,aaaa瞧不起我小写字母是吧', 'Zzzz,zzzz甚至我都比你靠前 谁叫你是小写字母','Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black, Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
 
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
@@ -215,20 +214,60 @@
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
+    const totalYears = inventors.reduce((total,cur_inventor) => {
+        return total + (cur_inventor.passed - cur_inventor.year);
+    }, 0)
+    console.log(totalYears);
+    document.getElementById('demo4').innerHTML = totalYears;
 
     // 5. Sort the inventors by years lived
+    const unordered = inventors.sort((a,b) => {
+        let lastInventor = a.passed - a.year;
+        let nextInventor = b.passed - b.year;
+        return nextInventor < lastInventor;//相邻两个科学家的年龄做对比 只要last大（说明上一个发明家更老）那就排在前面
+        // return lastInventor > nextInventor ? -1 : 1;这样更好理解
+    })
+    console.table(unordered)
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-
+    // const category = document.querySelector('.mw-category');
+    // const links = Array.from(category.querySelectorAll('a'));
+    // const de = links
+    //             .map(link => link.textContent)
+    //             .filter(streetName => streetName.includes('de'));    
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+
+    // 因为people的每一项都是字符串
+    // 所以要先把这每一项都变成数组 然后提取出来数组的某一位（就是那个lastName啦）
+    const alpha = people.sort((a,b) => {
+        const [alastName,afirstName] = a.split(",");
+        const [blastName,bfirstName] = b.split(",");
+        return alastName > blastName ? 1 : -1;//按照字母表的顺序来排
+    })
+    console.log(alpha);
+
+    // 字符串的比较方法如下 大写字母确实是“<”小写字母的~
+    // const a = "bb";
+    // const b = "cc";
+    // const c = "A"
+    // console.log(a < b);//true
+    // console.log(c < a && c < b);//true
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
+    const transportation = data.reduce(function(obj,item){
+        if(!obj[item]){
+            obj[item] = 0;
+        }
+        obj[item]++;
+        return obj;
+    }, {});
+    console.log(transportation);
   </script>
 </body>
 </html>

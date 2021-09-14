@@ -1,10 +1,43 @@
+https://fangzhousu.github.io/JS-30Demos/04_Array-Practice/index-billSu.html
+
+![请添加图片描述](https://img-blog.csdnimg.cn/4110b907a980492484e11fded1ba6f44.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5pWy5Luj56CB55qE5bCP5o-Q55C05omL,size_20,color_FFFFFF,t_70,g_se,x_16)
+
 # 我的感悟
 
 - 首先 数组在算法题中是常客！所以学习好JS中数组的一些高级操作可以让我们更优雅地解题！
 
+- 其次 本练习中 对reduce sort的用法进行了多方面的应用！妙！
+- 第八题的方法非常强大！利用JS语法轻松地找出了一个字符串数组中元素的个数 把reduce这个“数组的归并方法”（用于迭代数组所有项 并在此基础上构建一个最终返回值）的用途扩展开来 
 
+- 来剖析下这个第八题
 
+首先贴一段红宝书的内容
 
+![在这里插入图片描述](https://img-blog.csdnimg.cn/0ccc715666954883ad908dff58bff2a7.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5pWy5Luj56CB55qE5bCP5o-Q55C05omL,size_15,color_FFFFFF,t_70,g_se,x_16)
+
+我们知道 在reduce的参数 `(prev,cur,index,array)` 中 也就是 `(上一个归并值（一般记作total 视情况记作收集数据用的obj/arr),当前项的值,当前项,数组本身)`
+
+在本题中 代码如下：
+
+```js
+const data = ['a','a','b','c','d'];
+
+const transportation = data.reduce(function(obj,item){
+    if(!obj[item]){
+        obj[item] = 0;
+    }
+    obj[item]++;
+    return obj;
+}, {});
+```
+
+用预设值{}将obj初始化为空对象
+
+item为索引 依次遍历数组 来进行累加计数 obj[item]++ 如果没有发现这一项 就记0 最后返回这个对象——
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/ceb362d8e2a04d1d978481089de8e384.png)
+
+- 最后 所有代码在前辈的笔记中都列出来了 再次感谢前辈的整理！
 
 # 前辈的笔记
 
