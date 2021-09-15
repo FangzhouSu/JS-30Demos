@@ -63,3 +63,12 @@ https://fangzhousu.github.io/JS-30Demos/04_Array-Practice/index-billSu.html
 
 
 
+## Demo05
+
+灵活地运用了flex进行布局、transform进行简单的动画
+
+并在前辈的引导下 在原项目基础上完成了改进——可以聚焦于一个板块
+
+https://fangzhousu.github.io/JS-30Demos/05_Flex-Panel-Gallery/index-billSu.html
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/7f2734bbf6fe4f53aca73b5a3f615408.png)
