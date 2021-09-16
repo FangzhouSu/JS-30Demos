@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Type Ahead 👀</title>
+  <link rel="shortcut icon" href="../favicon.ico">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <style>
+    .billSu-header {
+      background-color: rgb(21, 21, 21);
+      text-align: center;
+      padding: 10px;
+      color: #dde666;
+      font-size: 20px;
+      font-weight: 100;
+    }
+    .billSu-header span{
+        margin: 0 5px;
+    }
+    .billSu-header a{
+        text-decoration: none;
+        color: unset;
+    }
+  </style>
+
+  <div class="billSu-header">
+    <span><a href="https://github.com/wesbos/JavaScript30" target="_blank">JavaScript30 灵感来源</a></span>
+    <span>|</span>
+    <span><a href="https://github.com/FangzhouSu/JS-30Demos" target="_blank">本项目仓库-billSU</a></span>
+    <span>|</span>
+    <span><a href="https://blog.csdn.net/qq_45704942?spm=1010.2135.3001.5421&type=blog" target="_blank">了解我</a></span>
+  </div>
+  
+  <form class="search-form">
+    <input type="text" class="search" placeholder="City or State">
+    <ul class="suggestions">
+      <li>Filter for a city</li>
+      <li>or a state</li>
+    </ul>
+  </form>
+<script>
+const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+
+</script>
+  </body>
+</html>
