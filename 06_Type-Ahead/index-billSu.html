@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Type Ahead 👀</title>
+  <link rel="shortcut icon" href="../favicon.ico">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <style>
+    .billSu-header {
+      background-color: rgb(21, 21, 21);
+      text-align: center;
+      padding: 10px;
+      color: #dde666;
+      font-size: 20px;
+      font-weight: 100;
+    }
+    .billSu-header span{
+        margin: 0 5px;
+    }
+    .billSu-header a{
+        text-decoration: none;
+        color: unset;
+    }
+  </style>
+
+  <div class="billSu-header">
+    <span><a href="https://github.com/wesbos/JavaScript30" target="_blank">JavaScript30 灵感来源</a></span>
+    <span>|</span>
+    <span><a href="https://github.com/FangzhouSu/JS-30Demos" target="_blank">本项目仓库-billSU</a></span>
+    <span>|</span>
+    <span><a href="https://blog.csdn.net/qq_45704942?spm=1010.2135.3001.5421&type=blog" target="_blank">了解我</a></span>
+  </div>
+  
+  <form class="search-form">
+    <input type="text" class="search" placeholder="City or State">
+    <ul class="suggestions">
+      <li>Filter for a city</li>
+      <li>or a state</li>
+    </ul>
+  </form>
+<script>
+    // 这里导入了一个城市的.json清单
+    const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+    
+    // 建立数组cities 通过fetch来取得json资料并传进去
+    // 这里与promise也有关系 但是俺还没学。 
+    const cities = [];
+    fetch(endpoint)
+        .then(blob => blob.json())
+        .then(data => cities.push(...data));
+
+    function findMatches(wordToMatch, cities){
+        return cities.filter(place => {
+            // here we need to figure out if the city or state matches what was searched
+            const regex = new RegExp(wordToMatch, 'gi');
+            // 正则表达式的内容 g代表全部 i代表不区分大小写
+            return place.city.match(regex) || place.state.match(regex)
+        })
+    }
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+
+    function displayMatches() {
+        const matchArray = findMatches(this.value, cities);
+        const html = matchArray.map(place => {
+            const regex = new RegExp(this.value, 'gi');
+            const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
+            const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
+            // 返回与输入框内容匹配的内容
+            return `
+                <li>
+                    <span class="name">${cityName}, ${stateName}</span>
+                    <span class="population">${numberWithCommas(place.population)}</span>
+                </li>
+            `;
+        }).sort().join('');
+        suggestions.innerHTML = html;
+    }
+
+    // 获取输入框元素 & 推荐的内容
+    const searchInput = document.querySelector('.search');
+    const suggestions = document.querySelector('.suggestions');
+
+    // 用addEventListener来监听键盘输入 每输入一个字符都会调用回调函数
+    // 回调函数会返回推荐的内容 获取suggestions元素块 渲染这部分的内容
+    searchInput.addEventListener('change', displayMatches);
+    searchInput.addEventListener('keyup', displayMatches);
+
+</script>
+  </body>
+</html>

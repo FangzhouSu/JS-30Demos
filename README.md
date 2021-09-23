@@ -72,3 +72,15 @@ https://fangzhousu.github.io/JS-30Demos/04_Array-Practice/index-billSu.html
 https://fangzhousu.github.io/JS-30Demos/05_Flex-Panel-Gallery/index-billSu.html
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/7f2734bbf6fe4f53aca73b5a3f615408.png)
+
+
+
+## Demo06
+
+正则表达式、fetch方法
+
+是本demo的核心
+
+https://fangzhousu.github.io/JS-30Demos/06_Type-Ahead/index-billSu.html
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/ef409a262a8f42ba87705284d220b39e.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5pWy5Luj56CB55qE5bCP5o-Q55C05omL,size_20,color_FFFFFF,t_70,g_se,x_16)

@@ -1,8 +1,23 @@
+2021-9-23
+
+
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/ef409a262a8f42ba87705284d220b39e.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5pWy5Luj56CB55qE5bCP5o-Q55C05omL,size_20,color_FFFFFF,t_70,g_se,x_16)
+
 
 
 # 我的感悟
 
+涉及了
 
+- ajax/**fetch**
+- json
+- 正则表达式
+- join()方法 数组转字符串
+
+好多内容还没学过！
+
+之后学完了再来看一定会很有收获！
 
 
 

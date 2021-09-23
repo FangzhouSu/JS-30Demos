@@ -1,6 +1,9 @@
     html {
       box-sizing: border-box;
-      background:#ffc600;
+      /* background:#ffc600; */
+      background-image: url(../BD_deep_blue.jpg);
+      background-size: 100%;
+      background-attachment: fixed;
       font-family:'helvetica neue';
       font-size: 20px;
       font-weight: 200;
