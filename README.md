@@ -84,3 +84,11 @@ https://fangzhousu.github.io/JS-30Demos/05_Flex-Panel-Gallery/index-billSu.html
 https://fangzhousu.github.io/JS-30Demos/06_Type-Ahead/index-billSu.html
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/ef409a262a8f42ba87705284d220b39e.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5pWy5Luj56CB55qE5bCP5o-Q55C05omL,size_20,color_FFFFFF,t_70,g_se,x_16)
+
+## Demo07
+
+数组练习
+
+https://fangzhousu.github.io/JS-30Demos/07_Array-Practice02/index-billSu.html
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/11b93df5bed84b62a685f299ff8e39a7.png)

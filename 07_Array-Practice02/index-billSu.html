@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Array Cardio02 💪💪</title>
+  <link rel="shortcut icon" href="../favicon.ico">
+  <link rel="stylesheet" href="table.css">
+</head>
+<body>
+    <style>
+        .billSu-header {
+        background-color: rgb(21, 21, 21);
+        text-align: center;
+        padding: 10px;
+        color: #dde666;
+        font-size: 20px;
+        font-weight: 100;
+        }
+        .billSu-header span{
+            margin: 0 5px;
+        }
+        .billSu-header a{
+            text-decoration: none;
+            color: unset;
+        }
+    </style>
+
+    <div class="billSu-header">
+        <span><a href="https://github.com/wesbos/JavaScript30" target="_blank">JavaScript30 灵感来源</a></span>
+        <span>|</span>
+        <span><a href="https://github.com/FangzhouSu/JS-30Demos" target="_blank">本项目仓库-billSU</a></span>
+        <span>|</span>
+        <span><a href="https://blog.csdn.net/qq_45704942?spm=1010.2135.3001.5421&type=blog" target="_blank">了解我</a></span>
+    </div>
+    <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
+    <table class="content">
+        <caption>people的信息</caption>
+        <thead>
+            <tr>
+                <th>Number</th>
+                <th>Name</th>
+                <th>year</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Wes</td>
+                <td>1988</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Kait</td>
+                <td>1986</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Irv</td>
+                <td>1970</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Lux</td>
+                <td>2015</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr/>
+    <table class="content">
+        <caption>comments的信息</caption>
+        <thead>
+            <tr>
+                <th>Number</th>
+                <th>Text</th>
+                <th>Id</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Love this!</td>
+                <td>523423</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Super good</td>
+                <td>823423</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>You are the best</td>
+                <td>2039842</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Ramen is my fav food ever</td>
+                <td>123523</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Nice Nice Nice!</td>
+                <td>542328</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>1.people中是否有19岁以上的人？</h2>
+    <div>答案是：<em id="demo1"></em> 😊</div>
+    <h2>2.people中是否每个人都是19岁以上？</h2>
+    <div>答案是：<em id="demo2"></em> 😊</div>
+    <h2>3.在comments中找到id是823423的资料</h2>
+    <div>这个资料见控制台😊</div>
+    <h2>4.在comments中找到id是823423的资料索引值, 並通过索引值刪除这个资料</h2>
+    <div>这个资料见控制台😊</div>
+
+
+    <script>
+        // ## Array Cardio Day 2
+
+        const people = [
+        { name: 'Wes', year: 1988 },
+        { name: 'Kait', year: 1986 },
+        { name: 'Irv', year: 1970 },
+        { name: 'Lux', year: 2015 }
+        ];
+
+        const comments = [
+        { text: 'Love this!', id: 523423 },
+        { text: 'Super good', id: 823423 },
+        { text: 'You are the best', id: 2039842 },
+        { text: 'Ramen is my fav food ever', id: 123523 },
+        { text: 'Nice Nice Nice!', id: 542328 }
+        ];
+
+        // Some and Every Checks
+        // 01 Array.prototype.some() // is at least one person 19 or older?
+        const date = new Date();
+        const isAdult = person => 
+            date.getFullYear() - person.year >= 19;
+        document.getElementById("demo1").innerHTML = people.some(isAdult)
+
+        // 02 Array.prototype.every() // is everyone 19 or older?
+        document.getElementById("demo2").innerHTML = people.every(isAdult)
+
+
+        // Array.prototype.find()
+        // Find is like filter, but instead returns just the one you are looking for
+        // 03 find the comment with the ID of 823423
+        const comment = comments.find(comment => comment.id === 823423);
+        console.table(comment);
+
+        // Array.prototype.findIndex()
+        // Find the comment with this ID
+        // 04 delete the comment with the ID of 823423
+        const index = comments.findIndex(comment => comment.id === 823423);
+        // 法一 使用展开符 与 slice方法
+        // const newComments = [
+        //     ...comments.slice(0, index),
+        //     ...comments.slice(index + 1)
+        // ];
+        // console.table(newComments);
+
+        // 法二 使用splice方法 可以返回被删除的元素并删去数组中的内容
+        comments.splice(index,1);
+        // 跨过那个被删除的元素 重新组合数组——原来删除某个元素还可以这样做！
+        console.table(comments);
+
+    </script>
+</body>
+</html>

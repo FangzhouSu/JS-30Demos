@@ -1,0 +1,33 @@
+/* 由于原始的表格的样式太难看了  加一点样式~ */
+.content {
+    font-family: 'Times New Roman', Times, serif;
+    /* border-collapse: collapse; */
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* 全体表格元素 */
+.content td, .content th{
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+/* 灰白相间的斑马纹表格效果 */ 
+.content tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+/* 鼠标悬浮的效果 */
+.content tbody tr:hover {
+    background-color: #ddd;
+    text-align: center;
+    border: 1px, solid,blue;
+}
+
+/* 表头的效果 */
+.content thead {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: skyblue;
+    color: white;
+}
