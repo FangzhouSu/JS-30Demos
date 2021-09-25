@@ -92,3 +92,15 @@ https://fangzhousu.github.io/JS-30Demos/06_Type-Ahead/index-billSu.html
 https://fangzhousu.github.io/JS-30Demos/07_Array-Practice02/index-billSu.html
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/11b93df5bed84b62a685f299ff8e39a7.png)
+
+
+
+## Demo08
+
+H5中的Canvas画布
+
+复习了下脱离文档流与元素垂直居中~
+
+https://fangzhousu.github.io/JS-30Demos/08_Fun-with-HTML5-Canvas/index-billSu.html
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/7bef6e7ab6dc4c79b33425cf0fd70b76.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5pWy5Luj56CB55qE5bCP5o-Q55C05omL,size_20,color_FFFFFF,t_70,g_se,x_16)

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML5 Canvas</title>
+  <link rel="shortcut icon" href="../favicon.ico">
+
+</head>
+<body>
+    <style>
+        /* 去掉浏览器四周的空白 */
+        html,body {
+          margin:0;
+        }
+    </style>
+
+    <style>
+        body{
+            background-image: url(../ByteDance.jpg);
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+        .billSu-header {
+        background-color: rgb(21, 21, 21);
+        text-align: center;
+        padding: 10px;
+        color: #dde666;
+        font-size: 20px;
+        font-weight: 100;
+        }
+        .billSu-header span{
+            margin: 0 5px;
+        }
+        .billSu-header a{
+            text-decoration: none;
+            color: unset;
+        }
+        h1{
+            justify-content: center;
+        }
+        .box{
+            display: flex;
+        }
+        #draw{
+            width: 80%;
+            height: 80%;
+            border: 10px solid #868686;
+            margin: auto; /* 父元素设置了flex布局 子元素加上margin:auto;即可设置垂直居中 */ 
+        }
+    </style>
+    
+    
+    <div class="billSu-header">
+        <span><a href="https://github.com/wesbos/JavaScript30" target="_blank">JavaScript30 灵感来源</a></span>
+        <span>|</span>
+        <span><a href="https://github.com/FangzhouSu/JS-30Demos" target="_blank">本项目仓库-billSU</a></span>
+        <span>|</span>
+        <span><a href="https://blog.csdn.net/qq_45704942?spm=1010.2135.3001.5421&type=blog" target="_blank">了解我</a></span>
+    </div>
+    
+    <h1 style="z-index:-1;">试着用鼠标在下面的画板中作画吧！</h1>
+    <h6>如果想要在整块屏幕上作画记得给标题文字加上绝对定位 让其脱离文档流</h6>
+    <!-- 这里就是canvas的区块 再写个脚本 在其中设置一个ctx作为canvas的操作元素 -->
+    <div class="box"><canvas id="draw"></canvas></div>
+        
+<script>
+    const canvas = document.querySelector('#draw');// 用于操作canvas
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    ctx.strokeStyle = '#BADA55'; // 线条颜色
+    ctx.lineJoin = 'round'; // 线条连接样式（转角）
+    ctx.lineCap = 'round'; // 线条结束样式
+    ctx.lineWidth = 66; // 线条宽度
+    let isDrawing = false; // 判斷是否执行画图中
+    let lastX = 0; 
+    let lastY = 0;
+    let hue = 0; // 色相值，在hsl中使用
+    let direction = true; // 判斷粗細增減用
+
+    // 执行画图的函数
+    function draw(e) {
+        // 判斷是否 `isDrawing`，如果其值为`false`则`return`不触发此function
+        if (!isDrawing) { return; } 
+        // 设定线条颜色为hsl模式
+        ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`; 
+        // 起始画图路径
+        ctx.beginPath(); 
+        // 将路径指针移动到X Y点
+        ctx.moveTo(lastX, lastY); 
+        // 将起始点与目前滑鼠位置的X Y用线条连接起来
+        ctx.lineTo(e.offsetX, e.offsetY); 
+        // 將线条给绘制出来
+        ctx.stroke();
+        // 把結束点放进X Y变数中
+        [lastX, lastY] = [e.offsetX, e.offsetY]; 
+        
+        // 做颜色的变化效果 当色相值超过360后归零
+        hue++; 
+        if (hue >= 360) { 
+            hue = 0; 
+        }
+        // 做线条宽度的变化效果 当宽度达到指令值的时候 切换direction的true/false
+        if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) { 
+            direction = !direction; 
+        }
+        if (direction) {
+            ctx.lineWidth++;
+        } else {
+            ctx.lineWidth--;
+        }      
+    }
+
+    // 设定鼠标对应的监听器 也就是addEventListener效果
+
+    // 必不可少的 监听鼠标移动、按下去
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mousedown', (e) => {
+        isDrawing = true;
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+    });
+    // 鼠标指针移动到元素上方 并松开鼠标左键时 会发生mouseup事件
+    canvas.addEventListener('mouseup', () => isDrawing = false);
+    // 鼠标指针离开被选元素时 触发
+    canvas.addEventListener('mouseout', () => isDrawing = false);
+</script>
+
+
+
+</body>
+</html>
