@@ -104,3 +104,15 @@ H5中的Canvas画布
 https://fangzhousu.github.io/JS-30Demos/08_Fun-with-HTML5-Canvas/index-billSu.html
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/7bef6e7ab6dc4c79b33425cf0fd70b76.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5pWy5Luj56CB55qE5bCP5o-Q55C05omL,size_20,color_FFFFFF,t_70,g_se,x_16)
+
+
+
+## Demo09
+
+暂时还不清楚具体用处的
+
+chrome开发工具介绍（这个就和JavaScript没啥关系了哈哈）
+
+https://fangzhousu.github.io/JS-30Demos/09_Dev-Tools-Domination/index-billSu.html
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/dc47a50f2e7944f18236fb148321b6aa.png)

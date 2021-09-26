@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript30 - 09 - Dev Tools Domination | Gua's Note</title>
+</head>
+
+<body>
+    <style>
+        .billSu-header {
+        background-color: rgb(21, 21, 21);
+        text-align: center;
+        padding: 10px;
+        color: #dde666;
+        font-size: 20px;
+        font-weight: 100;
+        }
+        .billSu-header span{
+            margin: 0 5px;
+        }
+        .billSu-header a{
+            text-decoration: none;
+            color: unset;
+        }
+        a:hover{
+            background-color:rgb(116, 116, 116);
+        }
+    </style>
+    <div class="billSu-header">
+        <span><a href="https://github.com/wesbos/JavaScript30" target="_blank">JavaScript30 灵感来源</a></span>
+        <span>|</span>
+        <span><a href="https://github.com/FangzhouSu/JS-30Demos" target="_blank">本项目仓库-billSU</a></span>
+        <span>|</span>
+        <span><a href="https://blog.csdn.net/qq_45704942?spm=1010.2135.3001.5421&type=blog" target="_blank">了解我</a></span>
+    </div>
+    <p onClick="makeGreen()">~要打開console看唷~</p>
+
+    <script>
+        const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+        function makeGreen() {
+            const p = document.querySelector('p');
+            p.style.color = '#BADA55';
+            p.style.fontSize = '50px';
+        }
+
+        // Regular
+        console.log('-----01-----');
+        console.log('console.log');
+
+        // Interpolated
+        console.log('-----02-----');
+        console.log('Hello,%s', 'World.');
+
+        // Styled
+        console.log('-----03-----');
+        console.log('%c 文字加上font-style', 'font-size:50px; background:#ccc; text-shadow: 1px 1px 0 blue')
+
+
+        // warning!
+        console.log('-----04-----');
+        console.warn('用warn讓console顯示出警告圖示');
+
+        // Error :|
+        console.log('-----05-----');
+        console.error('用error讓console顯示出錯誤圖示');
+
+        // Info
+        // 这里貌似。。。没啥效果？
+        console.log('-----06-----');
+        console.info('用info讓console顯示出資訊圖示');
+
+        // Testing
+        console.log('-----07-----');
+        var a = 5;
+        var b = 10;
+        console.assert(a > b, 'false'); // 這行才會被印出來
+        console.assert(a < b, 'true');
+
+        // clearing
+        console.log('-----08-----');
+        console.log('用console.clear()來清除console');
+        //console.clear();
+
+        // Viewing DOM Elements
+        var test = function () { return 'test function'; };
+        test.run = function () { return 'test.run()'; };
+        console.log(test);
+        console.dir(test);
+
+        // Grouping together
+        // 把输出的信息通过group包起来
+        console.log('-----09-----');
+        var products = [{ no: 10001, name: 'Apple', price: 10 }, { no: 10002, name: 'Banana', price: 5 }];
+        products.forEach(products => {
+            console.groupCollapsed(`${products.no}`);
+            console.log(`name:${products.name}`);
+            console.log(`price:$${products.price}`);
+            console.groupEnd(`${products.no}`);
+        });
+
+        // counting
+        // 累加某个元素出现的次数
+        console.log('-----10-----');
+        console.count('a');
+        console.count('b');
+        console.count('b');
+        console.count('c');
+        console.count('c');
+        console.count('c');
+
+        // table
+        console.log('-----11-----');
+        console.table(dogs);
+
+        // timing
+        console.log('-----12-----');
+        (function () {
+            console.time('GET使用時間');
+            var xhr = new XMLHttpRequest();
+            // 计算区域内执行的时间（这里是 计算取回json资料的时间）
+            xhr.open('get', 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json');
+            xhr.send();
+            xhr.onload = function () {
+                console.timeEnd('GET使用時間');
+            }
+        })()
+
+
+    </script>
+</body>
+
+</html>
