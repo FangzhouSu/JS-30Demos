@@ -116,3 +116,15 @@ chrome开发工具介绍（这个就和JavaScript没啥关系了哈哈）
 https://fangzhousu.github.io/JS-30Demos/09_Dev-Tools-Domination/index-billSu.html
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/dc47a50f2e7944f18236fb148321b6aa.png)
+
+
+
+## Demo10
+
+这个demo做得可费老鼻子劲了
+
+做了一版优化 理解难度++++
+
+https://fangzhousu.github.io/JS-30Demos/10_Hold-Shift-and-Check-Checkboxes/index-billSu.html
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/cae45b7c5aff473fa08f7303d9ae2299.png)

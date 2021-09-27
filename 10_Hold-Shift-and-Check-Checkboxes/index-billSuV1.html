@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hold Shift to Check Multiple Checkboxes</title>
+  <link rel="shortcut icon" href="../favicon.ico">
+</head>
+<body>
+    <!-- 有小瑕疵的方法 跟着b站教程走的 看下面的回调函数  -->
+    <style>
+        html {
+            font-family: sans-serif;
+            background: #ffc600;
+        }
+
+        .inbox {
+            max-width: 400px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #F1F1F1;
+        }
+
+        .item:last-child {
+            border-bottom: 0;
+        }
+
+        /* 选择 */
+        /* input元素被选中之后 紧挨在它后面的label元素会被赋予这个css特性 */
+        input:checked+label {
+            background: #F9F9F9;
+            text-decoration: line-through;
+        }
+
+        input[type="checkbox"] {
+            margin: 20px;
+        }
+
+        label {
+            margin: 0;
+            padding: 20px;
+            transition: background 0.2s;
+            flex: 1;
+            font-family: 'helvetica neue';
+            font-size: 20px;
+            font-weight: 200;
+            border-left: 1px solid #D1E2FF;
+        }
+
+
+  </style>
+    <style>
+        .billSu-header {
+            background-color: rgb(21, 21, 21);
+            text-align: center;
+            padding: 10px;
+            color: #dde666;
+            font-size: 20px;
+            font-weight: 100;
+        }
+        .billSu-header span{
+            margin: 0 5px;
+        }
+        .billSu-header a{
+            text-decoration: none;
+            color: unset;
+        }
+        a:hover{
+            background-color:rgb(116, 116, 116);
+        }
+    </style>
+    <div class="billSu-header">
+        <span><a href="https://github.com/wesbos/JavaScript30" target="_blank">JavaScript30 灵感来源</a></span>
+        <span>|</span>
+        <span><a href="https://github.com/FangzhouSu/JS-30Demos" target="_blank">本项目仓库-billSU</a></span>
+        <span>|</span>
+        <span><a href="https://blog.csdn.net/qq_45704942?spm=1010.2135.3001.5421&type=blog" target="_blank">了解我</a></span>
+    </div>
+   <!--
+   The following is a common layout you would see in an email client.
+
+   When a user clicks a checkbox, holds Shift, and then clicks another checkbox a few rows down, all the checkboxes inbetween those two checkboxes should be checked.
+
+  -->
+
+
+    <div class="inbox">
+        <div class="item">
+            <!-- input元素的这个属性checked="false" 代表被划掉 -->
+            <input type="checkbox" id="check1">
+            <label for="check1">This is an inbox layout.</label>
+        </div>
+        <div class="item">
+            <input type="checkbox" id="check2">
+            <label for="check2">Check one item</label>
+        </div>
+        <div class="item">
+            <input type="checkbox" id="check3">
+            <label for="check3">Hold down your Shift key</label>
+        </div>
+        <div class="item">
+            <input type="checkbox" id="check4">
+            <label for="check4">Check a lower item</label>
+        </div>
+        <div class="item">
+            <input type="checkbox" id="check5">
+            <label for="check5">Everything inbetween should also be set to checked</label>
+        </div>
+        <div class="item">
+            <input type="checkbox" id="check6">
+            <label for="check6">Try do it with out any libraries</label>
+        </div>
+        <div class="item">
+            <input type="checkbox" id="check7">
+            <label for="check7">Just regular JavaScript</label>
+        </div>
+        <div class="item">
+            <input type="checkbox" id="check8">
+            <label for="check8">Good Luck!</label>
+        </div>
+        <div class="item">
+            <input type="checkbox" id="check9">
+            <label for="check9">Don't forget to tweet your result!</label>
+        </div>
+    </div>
+
+    <script>
+        // 01 选择所有checkbox复选框
+        const checkboxes = document.querySelectorAll('.inbox input[type = "checkbox"]');
+        
+        let startChecked;
+        
+        // 注意！！！这里有点问题！ 如果上来就按shift复选 会把shift后面的所有都选上！！
+        // 02 写一个回调函数 在监听中使用 对复选框进行操作
+        function handleCheck(e){
+            
+            // 勾选一下复选框 获得开始边界
+            console.log('startChecked',startChecked);
+            // e.shiftKey在按住shift键时 为true
+            // 当前复选框选中时 this.checked 为true
+            if(e.shiftKey && this.checked){
+                // 按着shift同时勾选复选框 打印出来结束边界
+                console.log('endChecked',this);
+                let isBetween = false;//元素是否在startChecked和endChecked之间
+                checkboxes.forEach(checkbox => {
+                    if(checkbox === startChecked || checkbox === this){
+                        isBetween = !isBetween;
+                    }
+                    // if(checkbox === this){
+                    //     // 遍历到我们点击的这个复选框 为止
+                    //     isBetween = false;
+                    // }
+                    if(isBetween){
+                        // 只要在其中就全部勾上
+                        checkbox.checked = true;
+                    }
+                })
+            }
+
+            startChecked = this;
+        }
+        // 03 使用监听事件（监听鼠标的点击）并调用回调函数进行处理 的函数 addEventListener
+        // 利用forEach拿到每个按钮
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('click', handleCheck);
+        });
+
+    </script>
+</body>
+</html>
