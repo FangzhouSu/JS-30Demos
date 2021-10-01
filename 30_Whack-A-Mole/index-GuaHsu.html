@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="背不起來的就寫下來吧。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Gua&#39;s Note">
+  <meta property="og:url" content="https://guahsu.io/">
+  <meta property="og:site_name" content="Gua&#39;s Note">
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-84594235-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <title>JavaScript30 - 30 - Whack A Mole | Gua's Note</title>
+  <link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bod">
+
+  <style>
+    body {
+      margin-top: 48px;
+    }
+
+    .GuaHsu-header {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      background-color: #333;
+      text-align: center;
+      padding: 10px;
+      color: #7ff3cb;
+      font-size: 20px;
+      font-weight: 100;
+      z-index: 999;
+    }
+
+    .GuaHsu-header span {
+      margin: 0 5px;
+    }
+
+    .GuaHsu-header a {
+      text-decoration: none;
+      color: unset;
+    }
+  </style>
+  <div class="GuaHsu-header">
+    <span>
+      <a href="https://guahsu.io/categories/JavaScript30/" target="_blank">JavaScript30 心得</a>
+    </span>
+    <span>|</span>
+    <span>
+      <a href="https://github.com/guahsu/JavaScript30" target="_blank">GitHub</a>
+    </span>
+  </div>
+
+
+  <h1>Whack-a-mole!
+    <span class="score">0</span>
+  </h1>
+  <div class="controllArea">
+    <div class="startBtn" onClick="startGame()">[Start!]</div>
+  </div>
+
+  <div class="game">
+    <div class="hole hole1">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole2">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole3">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole4">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole5">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole6">
+      <div class="mole"></div>
+    </div>
+  </div>
+
+  <script>
+    /**  取得頁面元素 */
+    const holes = document.querySelectorAll('.hole');
+    const scoreBoard = document.querySelector('.score');
+    const moles = document.querySelectorAll('.mole');
+    
+    /** 預設變數設定 */
+    let lastHole; // 最後一次出現的地鼠洞
+    let timeUP = false; // 遊戲時間是否結束戳記
+    let score = 0; // 分數
+
+    /** 地鼠出現後存在時間，傳入最小&最大值，回傳一個區間亂數 */
+    function randomTime(min, max) {
+      return Math.round(Math.random() * (max - min) + min);
+    }
+
+    /** 地鼠出現的洞 */
+    function randomHole(holes) {
+      // 取得地鼠洞數量區間內隨機一個洞
+      const idx = Math.floor(Math.random() * holes.length);
+      const hole = holes[idx];
+      // 避免骰到相同的
+      if (hole === lastHole) {
+        return randomHole(holes);
+      }
+      // 紀錄最後一個出現的地鼠洞
+      lastHole = hole;
+      return hole;
+    }
+
+    /**  地鼠出現 */
+    function peep() {
+      // 取得存在時間
+      const time = randomTime(300, 1000);
+      // 取得出現的洞
+      const hole = randomHole(holes);
+      // 移除已槌標記
+      hole.querySelector('.mole').classList.remove('bonked');
+      // 增加出現的動畫class
+      hole.classList.add('up');
+      // 設定存在時間到的時候移除出現動畫，且若遊戲時間未結束就繼續跑下一run
+      setTimeout(() => {
+        hole.classList.remove('up');
+        if (!timeUP) peep();
+      }, time)
+    }
+
+    /** 打地鼠 */
+    function bonk(e) {
+      // isTrusted防止腳本操作，class有bonked代表已被搥過，若符合上述兩者則不進行
+      if(!e.isTrusted || this.classList.contains('bonked')) return;
+      // 替被打到的地鼠加上bonked的樣式避免連續點擊得分
+      this.classList.add('bonked'); 
+      // 打到就移除出現的動畫
+      this.classList.remove('up');
+      // 加分
+      score++;
+      // 更新顯示分數
+      scoreBoard.textContent = score;
+    }
+
+    /** 開始遊戲 */
+    function startGame() {
+      // 時間重置
+      timeUP = false;
+      // 分數歸零
+      scoreBoard.textContent = 0;
+      score = 0;
+      // 執行地鼠出現函式
+      peep();
+      // 設定十秒後把時間押為結束
+      setTimeout(() => timeUP = true, 10000);
+    }
+
+    // 替每個地鼠加上click事件綁定bonk（打地鼠）
+    moles.forEach(mole => mole.addEventListener('click', bonk));
+  </script>
+</body>
+
+</html>
