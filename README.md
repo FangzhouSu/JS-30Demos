@@ -128,3 +128,13 @@ https://fangzhousu.github.io/JS-30Demos/09_Dev-Tools-Domination/index-billSu.htm
 https://fangzhousu.github.io/JS-30Demos/10_Hold-Shift-and-Check-Checkboxes/index-billSu.html
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/cae45b7c5aff473fa08f7303d9ae2299.png)
+
+
+
+## Demo11
+
+造了一个视频播放器的轮子
+
+https://fangzhousu.github.io/JS-30Demos/11_Custom-Video-Player/index-billSu.html
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/194c41013eff4edd97b3b32bd1b55480.png)

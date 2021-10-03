@@ -151,3 +151,6 @@ input[type=range]::-moz-range-thumb {
   background: #93cbce;
   cursor: pointer;
 }
+.fullScreen:hover{
+  color: #106f99;
+}

@@ -1,3 +1,4 @@
+/* Get Our Elements */
 const player = document.querySelector('.player');
 const video = player.querySelector('.viewer');
 const progress = player.querySelector('.progress');
@@ -7,20 +8,23 @@ const fullScreenBtn = player.querySelector('.fullScreen');
 const skipButtons = player.querySelectorAll('[data-skip]');
 const ranges = player.querySelectorAll('.player__slider');
 
-//點擊切換播放/暫停（視窗、播放鈕）
+// 01 针对 播放/暂停按钮做监听 
+// 将原版解决方案的影片动作video[method]()与更换按钮icon的操作结合起来了~
 function togglePlay() {
   const method = video.paused ? 'play' : 'pause';
-  const icon = video.paused ? `<i class="icon-play"></i>` : `<i class="icon-pause"></i>`;
+  const icon = video.paused ? '►' : '❚ ❚';// method属性值为play时 显示►图标
   toggle.innerHTML = icon;
+  // video[method]() 比较特别的写法~用于直接操作video的属性！
   video[method]();
 }
 
-//音量、速率操作
+// 02 音量（左）、播放倍速（右）操作
+// 在HTML中已经定义好 range类型的input标签了  所以这里调整对应的属性值即可
 function handleRangeUpadte() {
   video[this.name] = this.value;
 }
 
-//快進、快退操作
+// 03 快进、快退操作
 function skip(direction) {
   let skipTime = 0;
   if (direction === 'left') {
@@ -33,13 +37,13 @@ function skip(direction) {
   video.currentTime += parseFloat(skipTime);
 }
 
-//進度條顯示
+// 04 进度条显示
 function handleProgress() {
-  const precent = (video.currentTime / video.duration) * 100;
+  const precent = (video.currentTime / video.duration) * 100;// 使用video的两个属性计算出进度的%数
   progressBar.style.flexBasis = `${precent}%`;
 }
 
-//進度條操作（點擊、拖曳）
+// 05 进度条操作（点击、拖拽）
 let mousedown = false;
 function scrunb(e) {
   const mouseType = e.type;
@@ -51,7 +55,7 @@ function scrunb(e) {
   }
 }
 
-//全螢幕
+// 06 全屏播放
 function fullScreen() {
   if (video.requestFullscreen) {
     video.requestFullscreen();
@@ -64,13 +68,13 @@ function fullScreen() {
   }
 }
 
-//鍵盤動作
+// 07 对键盘的所有动作进行监听
 function eventKeydown(e) {
   switch (e.keyCode) {
     //空白鍵
     case 32:
       e.preventDefault()
-      togglePlay();
+      togglePlay();// 调用暂停、播放的函数
       break;
     //方向鍵左
     case 37:
@@ -83,10 +87,11 @@ function eventKeydown(e) {
   }
 }
 
-/* Hook up the event listners */
+/* Hook up the event listners 连接事件与监听器们 */
 video.addEventListener('click', togglePlay);
 toggle.addEventListener('click', togglePlay);
 
+// 保证拖拽滑动条时也可以更新视频属性 但是我试过 不加也可以实现这个需求呢...
 ranges.forEach(range => {
   range.addEventListener('change', handleRangeUpadte);
   range.addEventListener('mousemove', handleRangeUpadte);
