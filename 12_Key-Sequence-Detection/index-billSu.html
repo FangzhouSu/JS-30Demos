@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript12/30 - Key Detection | by billSu</title>
+  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+  <link rel="shortcut icon" href="../favicon.ico">
+</head>
+
+<body>
+    <style>
+        .billSu-header {
+          /* 改了一下头部的样式 保证它一直贴在最上面 */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgb(21, 21, 21);
+            text-align: center;
+            padding: 10px;
+            color: #dde666;
+            font-size: 20px;
+            font-weight: 100;
+            z-index: 999;
+        }
+        .billSu-header span{
+            margin: 0 5px;
+        }
+        .billSu-header a{
+            text-decoration: none;
+            color: unset;
+        }
+        a:hover{
+            background-color:rgb(116, 116, 116);
+        }
+    </style>
+    <div class="billSu-header">
+        <span><a href="https://github.com/wesbos/JavaScript30" target="_blank">JavaScript30 灵感来源</a></span>
+        <span>|</span>
+        <span><a href="https://github.com/FangzhouSu/JS-30Demos" target="_blank">本项目仓库-billSU</a></span>
+        <span>|</span>
+        <span><a href="https://blog.csdn.net/qq_45704942?spm=1010.2135.3001.5421&type=blog" target="_blank">了解我</a></span>
+    </div>
+
+    <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+
+    <h1 style="margin-top: 60px;">输入秘籍“billsu”<br>让我们看看接下来会发生什么</h1>
+    <img src="让我们看看接下来会发生什么.jpg" alt="玩儿个梗~" width="30%">
+    <h2>已输入的密码：<span class="inputCode"></span></h2>
+
+    <script>
+        const pressed = [];// pressed数组保存输入
+        const secretCode = 'billsu';// 设定的“秘籍”
+        // 监听键盘的松开 keyup 
+        window.addEventListener('keyup', (e) => {
+            // 获得的值push进数组中
+            pressed.push(e.key);
+            //splice方法会删去原数组从下标0开始 共pressed.length - secretCode.length个元素 并返回这部分的内容 
+            // 这里用splice是为了做删除操作（个数为负数则不会删去元素）
+            // 这样就可以在输入了超过secretCode.length个字符时 不断地删去前面的字符来保证可以重复输入字符！
+            pressed.splice(0, pressed.length - secretCode.length);
+            if(pressed.join('').includes(secretCode)){
+                cornify_add();// 调用来自http://www.cornify.com/js/cornify.js的API 在画面中输入内容
+            }
+            console.log(pressed);// 打印数组目前的内容
+            // 将数组转换为-连接的字符串并在页面中呈现出来
+            document.querySelector('.inputCode').innerHTML = pressed.join('-');
+        })
+
+    </script>
+</body>
+</html>

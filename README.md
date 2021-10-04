@@ -138,3 +138,22 @@ https://fangzhousu.github.io/JS-30Demos/10_Hold-Shift-and-Check-Checkboxes/index
 https://fangzhousu.github.io/JS-30Demos/11_Custom-Video-Player/index-billSu.html
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/194c41013eff4edd97b3b32bd1b55480.png)
+
+
+
+## Demo12
+
+很有趣的一个demo
+
+对监听键盘输入有了更深的理解（学会了咋把键入内容保存在数组中~）
+
+接触了新的玩法~从其他网站引入API来达成某种效果（不用自己写回调函数了哦耶）
+
+https://fangzhousu.github.io/JS-30Demos/12_Key-Sequence-Detection/index-billSu.html
+
+另外今天这个demo要分成两幅图 才能更好地看效果了XD
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/8cd9c4d50f7e46c7aecce151fdc2e6d8.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5pWy5Luj56CB55qE5bCP5o-Q55C05omL,size_20,color_FFFFFF,t_70,g_se,x_16)
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/e09fbdeaf34b408eacf8c19626dacc10.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5pWy5Luj56CB55qE5bCP5o-Q55C05omL,size_20,color_FFFFFF,t_70,g_se,x_16)
+
