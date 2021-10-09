@@ -36,7 +36,17 @@
             color: unset;
         }
         h1{
-            justify-content: center;
+            /* position: sticky; */
+            /* float: left; */
+            /* position: absolute;
+            z-index: -1; 仅能在定位元素上奏效*/
+        }
+        h6{
+            /* position: sticky; */
+            /* float: left; */
+            /* position: fixed;
+            top: 5rem;
+            z-index: -1; */
         }
         .box{
             display: flex;
@@ -58,8 +68,8 @@
         <span><a href="https://blog.csdn.net/qq_45704942?spm=1010.2135.3001.5421&type=blog" target="_blank">了解我</a></span>
     </div>
     
-    <h1 style="z-index:-1;">试着用鼠标在下面的画板中作画吧！</h1>
-    <h6>如果想要在整块屏幕上作画记得给标题文字加上绝对定位 让其脱离文档流</h6>
+    <h1>试着用鼠标在下面的画板中作画吧！</h1>
+    <h6>如果想要在整块屏幕上作画记得给标题文字加上绝对定位&z-index:-1; 让其脱离文档流并处于最底层</h6>
     <!-- 这里就是canvas的区块 再写个脚本 在其中设置一个ctx作为canvas的操作元素 -->
     <div class="box"><canvas id="draw"></canvas></div>
         
