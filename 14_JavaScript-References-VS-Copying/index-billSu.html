@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS 数组、对象中的引用和复制 | by billSu</title>
+  <link rel="shortcut icon" href="../favicon.ico">
+</head>
+<body>
+    <style>
+        .billSu-header {
+          /* 改了一下头部的样式 保证它一直贴在最上面 */
+            /* position: absolute; */
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgb(21, 21, 21);
+            text-align: center;
+            padding: 10px;
+            color: #dde666;
+            font-size: 20px;
+            font-weight: 100;
+            z-index: 999;
+        }
+        .billSu-header span{
+            margin: 0 5px;
+        }
+        .billSu-header a{
+            text-decoration: none;
+            color: unset;
+        }
+        a:hover{
+            background-color:rgb(116, 116, 116);
+        }
+    </style>
+    <div class="billSu-header">
+        <span><a href="https://github.com/wesbos/JavaScript30" target="_blank">JavaScript30 灵感来源</a></span>
+        <span>|</span>
+        <span><a href="https://github.com/FangzhouSu/JS-30Demos" target="_blank">本项目仓库-billSU</a></span>
+        <span>|</span>
+        <span><a href="https://blog.csdn.net/qq_45704942?spm=1010.2135.3001.5421&type=blog" target="_blank">了解我</a></span>
+    </div>
+
+    <h1>请打开控制台查看细则🧐</h1>
+    <p>通过这部分我们可以感受JavaScript中对不同数据类型的“引用 Reference” 和 “复制 Copy”的区别</p>
+
+    <script>
+        // start with strings, numbers and booleans
+        // 01 发生了常规值传递 而不是地址值
+        let age = 100;
+        let age2 = age;
+        console.log("01 发生了常规值传递 而不是地址值");
+        console.log(age, age2);// 100 100
+        age = 200;
+        console.log(age, age2);// 200 100
+
+
+        // Let's say we have an array
+        const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+
+        // and we want to make a copy of it.
+        const team = players;
+        console.log("02 研究数组的传递（引用值传递 因为数组也是个对象~）");
+        console.log(players, team);// ['Wes', 'Sarah', 'Ryan', 'Poppy']; ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+
+        // You might think we can just do something like this:
+        team[0] = 'bill666';
+        console.log("引用变量team和players指向的同一个地址！所以改变是同步的~");
+        console.log(players, team);//['bill666', 'Sarah', 'Ryan', 'Poppy']; ['bill666', 'Sarah', 'Ryan', 'Poppy']; 
+
+        // however what happens when we update that array?但我们修改这个数组的时候会发生什么呢？
+
+        // now here is the problem!这就是问题所在
+
+        // oh no - we have edited the original array too!NO！ 原数组也被修改过了
+
+        // Why? It's because that is an array reference, not an array copy. They both point to the same array!
+        // 为什么？因为 team 只是这个数组的引用，并不是它的复制。
+        // team 和 players 指向的是同一个数组。
+
+        console.log("03 复制数组 而不是引用数组");
+        console.log("也就是让引用变量team 与 players指向的不是同一个数组（直观表现为二者的引用地址不同）");
+        // So, how do we fix this? We take a copy instead!所以如何解决这个问题？下面来进行复制 取代"引用1"。
+        console.log("   解决方法01 利用Array.prototype.slice()复制 而不是引用（地址值传递）");
+        const team2 = players.slice();
+
+        // one way
+
+        // or create a new array and concat the old one in
+        console.log("   解决方法02 创建新数组并利用Array.prototype.concat()复制");
+        const team3 = [].concat(players);
+
+        // or use the new ES6 Spread
+        console.log("   解决方法03 利用扩展运算符复制");
+        const team4 = [...players];
+
+        // now when we update it, the original one isn't changed
+        console.log("   解决方法04 ES6中的from方法 其实也是复制~");
+        const team5 = Array.from(players);
+
+        // The same thing goes for objects, let's say we have a person object
+        // 对 Object 类型的数据来说也是一样的，我们用一个 person 例子来说明
+
+        // with Objects
+        const person = {
+            name: 'Wes Bos',
+            age: 80
+        };
+
+        // and think we make a copy:
+        // const captain = person;
+        // captain.number = 99;// 这样会导致person对象的number属性也被添加（本来是没有的）
+
+        // how do we take a copy instead?
+        console.log("04 复制对象 而不是引用对象");
+        console.log("   解决方法1 Object.assign() 浅拷贝的方法");
+        const cap = Object.assign({}, person, {number: 99, age:12});//— 这里进行了一层嵌套的浅拷贝
+        console.log(person,cap);// 二者的地址是不同的！给cap赋值不会改变person
+
+        // We will hopefully soon see the object ...spread
+        // const cap3 = {...person};
+
+        // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+        // 需要注意的是：这里的例子里面，我们用的数组和对象都只是一层嵌套，
+        // Lodash 有一个深度复制的方法，但你使用之前需要多考虑一下。
+        const wes = {
+            name: 'Wes',
+            age: 100,
+            social: {
+                twitter: '@wesbos',
+                facebook: 'wesbos.developer'
+            }
+        };
+
+        console.log("   解决方法2 JSON转换 进行了深拷贝");
+        const dev = JSON.parse(JSON.stringify(wes));
+        dev.social.name = '我不会影响到原对象啦啦啦'// 进行了深拷贝 不会使wes对象的social子对象同时被更改 
+
+        const dev2 = Object.assign({}, wes);
+        dev2.social.name = 'wes'// 这种方法的浅拷贝 会使wes对象的social子对象同时被更改
+        console.log(wes, dev, dev2);// 可以看看打印出来的效果 蛮有意思的~
+
+
+    </script>
+
+</body>
+</html>

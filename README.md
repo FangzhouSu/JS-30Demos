@@ -13,11 +13,11 @@
 练习注意
 
 - 练习前把index-START.html的代码粘过来即可 
-- index.html包含了我根据前辈笔记标注的注释 比较齐全
+- index-billSu.html包含了我根据前辈笔记标注的注释&自己的思考 比较齐全
 
 
 
-另外感谢下面两位前辈做好的笔记 
+另外感谢下面三位前辈做好的笔记 
 
 
 
@@ -30,6 +30,8 @@
 > Javascript30是一個線上的教學課程，利用三十天的時間每天實作一個簡單的JS作品並自身初學者的角度講解相關概念。 詳見教學網站：[https://JavaScript30.com](https://javascript30.com/)。 原Github位址：[wesbos/Javascript30](https://github.com/wesbos/JavaScript30)
 >
 > https://dustinhsiao21.github.io/Javascript30-dustin/ 中文版
+
+
 
 
 
@@ -156,4 +158,42 @@ https://fangzhousu.github.io/JS-30Demos/12_Key-Sequence-Detection/index-billSu.h
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/8cd9c4d50f7e46c7aecce151fdc2e6d8.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5pWy5Luj56CB55qE5bCP5o-Q55C05omL,size_20,color_FFFFFF,t_70,g_se,x_16)
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/e09fbdeaf34b408eacf8c19626dacc10.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5pWy5Luj56CB55qE5bCP5o-Q55C05omL,size_20,color_FFFFFF,t_70,g_se,x_16)
+
+
+
+## Demo13
+
+https://fangzhousu.github.io/JS-30Demos/13_Slide-in-on-Scroll/index-billSu.html
+
+很有趣的一个demo 
+
+利用滚动事件监听 滑动页面时 对页面中的图片进行判断（是否滑了一半）如果符合要求就将其滑入
+
+滑过这个图片/上移过半后 图片滑出
+
+
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/8d4071ebacfe4cedaa834774f29d09e9.png)
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/cd66abdc3e4442069e27963535bd400a.png)
+
+## Demo14
+
+https://fangzhousu.github.io/JS-30Demos/14_JavaScript-References-VS-Copying/index-billSu.html
+
+数据类型比较底层的内容——
+
+“引用（地址）值” OR “数值”
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/0d58cec98edf44c3813022dabfa70544.png)
+
+补充一下深拷贝、浅拷贝的内容
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/eaddb1bb15ca4d588c17aedb1ed6029a.png)
+
+
+
+## Demo15
+
+https://fangzhousu.github.io/JS-30Demos/15_LocalStorage/index-billSu.html
 
