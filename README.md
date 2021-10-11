@@ -33,6 +33,19 @@
 
 
 
+> 创建日期：2016-12-20
+> 最后更新：2018-12-05
+>
+> > Repo by: [Soyaine](https://github.com/soyaine)
+> > [JavaScript30](https://javascript30.com/) 教程作者：[Wes Bos](https://github.com/wesbos)
+> > 完整指南在 [GitHub](https://github.com/soyaine/JavaScript30)，喜欢请 Star 哦♪(^∇^*)
+>
+> JavaScirpt30 是 Wes Bos 推出的一个 30 天挑战。项目免费提供了 30 个视频教程、30 个挑战的起始文档和 30 个挑战解决方案源代码。目的是帮助人们用纯 JavaScript 来写东西，不借助框架和库，也不使用编译器和引用。
+>
+> 官网的 slogan 如下：
+>
+> > Build 30 things in 30 days with 30 tutorial No Frameworks × No Compilers × No Libraries × No Boilerplate
+
 
 
 # Demos
@@ -197,3 +210,6 @@ https://fangzhousu.github.io/JS-30Demos/14_JavaScript-References-VS-Copying/inde
 
 https://fangzhousu.github.io/JS-30Demos/15_LocalStorage/index-billSu.html
 
+很棒、也稍微有点难度的demo 核心是H5中的 `localStorage`  亮点如下——
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/d1dac5e775d24f928e7831911cac0b7c.png)
