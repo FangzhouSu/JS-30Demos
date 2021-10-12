@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mouse Shadow | by billSu</title>
+  <link rel="shortcut icon" href="../favicon.ico">
+</head>
+<body>
+    <style>
+      .billSu-header {
+      /* 改了一下头部的样式 保证它一直贴在最上面 */
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          background-color: rgb(21, 21, 21);
+          text-align: center;
+          padding: 10px;
+          color: #dde666;
+          font-size: 20px;
+          /* font-weight: bold; */
+          z-index: 999;
+      }
+      .billSu-header span{
+          margin: 0 5px;
+      }
+      .billSu-header a{
+          text-decoration: none;
+          color: unset;
+      }
+      a:hover{
+          background-color:rgb(116, 116, 116);
+      }
+  </style>
+  <div class="billSu-header">
+      <span><a href="https://github.com/wesbos/JavaScript30" target="_blank">JavaScript30 灵感来源</a></span>
+      <span>|</span>
+      <span><a href="https://github.com/FangzhouSu/JS-30Demos" target="_blank">本项目仓库-billSU</a></span>
+      <span>|</span>
+      <span><a href="https://blog.csdn.net/qq_45704942?spm=1010.2135.3001.5421&type=blog" target="_blank">了解我</a></span>
+  </div>
+
+  <div class="hero">
+    <h1 contenteditable>🔥WOAH🎉!</h1>
+  </div>
+
+  <style>
+  html {
+    color:black;
+    font-family: sans-serif;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color:black;
+  }
+
+  h1 {
+    text-shadow: 10px 10px 0 rgba(0,0,0,1);
+    font-size: 100px;
+  }
+  </style>
+
+<script>
+    const hero = document.querySelector('.hero');
+    const text = hero.querySelector('h1');
+    const factor = 0.4;// 当鼠标移动至显示区域边界时，阴影距离占hero元素宽和高的比例
+
+    function shadowMove(e){
+      // 解构赋值
+      // 把hero的offsetWidth(窗口)等属性赋为 width height
+      // offsetWidth实际获取的是盒模型的宽度(width+border + padding)
+      const { offsetWidth: width, offsetHeight: height } = hero;
+      // offsetX 屏幕X坐标数值 也就是鼠标现在的x坐标
+      let { offsetX: x, offsetY: y } = e;
+      // console.log(x);
+
+      // 将鼠标位置转换为相对视口左上角的坐标 本例中由于hero元素占满了视口 所以没有起到实际作用
+      if(this !== e.target) {
+        x = x + e.target.offsetLeft;
+        y = y + e.target.offsetTop;
+      }
+
+      const xWalk = parseInt((x-width/2)*factor);
+      const yWalk = parseInt((y-height/2)*factor);
+
+    //使用模板字符串赋值
+    text.style.textShadow = `
+      ${xWalk}px ${yWalk}px 0 rgba(255,0,255,0.7),
+      ${xWalk * -1}px ${yWalk}px 0 rgba(0,255,255,0.7),
+      ${yWalk}px ${xWalk * -1}px 0 rgba(0,255,0,0.7),
+      ${yWalk * -1}px ${xWalk}px 0 rgba(0,0,255,0.7)
+    `;
+
+  }
+
+//在hero范围内监听鼠标移动事件
+  hero.addEventListener('mousemove', shadowMove);
+</script>
+</body>
+</html>
