@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sort Without Articles | by billSu</title>
+  <link rel="shortcut icon" href="../favicon.ico">
+</head>
+<body>
+    <style>
+        .billSu-header {
+        /* 改了一下头部的样式 保证它一直贴在最上面 */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgb(21, 21, 21);
+            text-align: center;
+            padding: 10px;
+            color: #dde666;
+            font-size: 20px;
+            /* font-weight: bold; */
+            z-index: 999;
+        }
+        .billSu-header span{
+            margin: 0 5px;
+        }
+        .billSu-header a{
+            text-decoration: none;
+            color: unset;
+        }
+        a:hover{
+            background-color:rgb(116, 116, 116);
+        }
+    </style>
+
+    <div class="billSu-header">
+        <span><a href="https://github.com/wesbos/JavaScript30" target="_blank">JavaScript30 灵感来源</a></span>
+        <span>|</span>
+        <span><a href="https://github.com/FangzhouSu/JS-30Demos" target="_blank">本项目仓库-billSU</a></span>
+        <span>|</span>
+        <span><a href="https://blog.csdn.net/qq_45704942?spm=1010.2135.3001.5421&type=blog" target="_blank">了解我</a></span>
+    </div>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            background: url("../BD_deep_blue.jpg");
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #bands {
+            list-style: inside square;
+            font-size: 20px;
+            background: white;
+            width: 500px;
+            margin: auto;
+            margin-top: 5rem;
+            padding: 0;
+            box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+        #bands li {
+            border-bottom: 1px solid #efefef;
+            padding: 20px;
+        }
+        #bands li:last-child {
+            border-bottom: 0;
+        }
+
+        a {
+            color: #ffc600;
+            text-decoration: none;
+        }
+
+    </style>
+
+    <ul id="bands"></ul>
+
+<script>
+    const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+    // 去除字符串的前缀 
+    // 使用replace搭配正则表达式 将A The An开头的文字替换为空白(注意是A/The/An加一个空格开头)
+    // trim()方法用于将字符串首位的空格去掉~
+    // 法一const delPrefix = item => item.replace(/^(The|A|An)\s{1}/,'');
+    const delPrefix = bandName => 
+        bandName.replace(/^(a |the |an )/i, '').trim();
+
+    // 数组排序
+    const sortedbands = bands.sort((a, b) => 
+        delPrefix(a) > delPrefix(b) ? 1 : -1
+    );
+
+    // 展示至HTML页面
+    // 法一document.querySelector('#bands').innerHTML = '<li>' + sortedbands.join('</li><li>') + '</li>';这是一种方法
+    document.querySelector('#bands').innerHTML = 
+    sortedbands.map(band => `<li>${band}</li>`).join('');
+    // 测试下数组的返回值
+    console.log(sortedbands);
+</script>
+
+</body>
+</html>
