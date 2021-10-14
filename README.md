@@ -224,3 +224,20 @@ https://fangzhousu.github.io/JS-30Demos/16_Mouse-Move-Shadow/index-billSu.html
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/0520dd5aebf442998b5c9a903d429466.png)
 
+
+
+## Demo17
+
+https://fangzhousu.github.io/JS-30Demos/17_Sort-Without-Articles/index-billSu.html
+
+
+
+## Demo18 
+
+[效果展示](https://fangzhousu.github.io/JS-30Demos/18_Adding-Up-Times-with-Reduce/index-billSu.html)
+
+很棒的例子！做到这里感觉对JS更有感觉了~
+
+果然好多API是要多用才能熟练嘛😄
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/b038a7ea0ea84417918ab637930bc04c.png)
