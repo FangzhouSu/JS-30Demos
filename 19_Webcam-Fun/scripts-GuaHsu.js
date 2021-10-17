@@ -37,8 +37,8 @@ function paintToCanavas() {
     // 取得pixels
     let pixels = ctx.getImageData(0, 0, width, height);
     // 製作效果
-    // pixels = redEffect(pixels); // 紅色濾鏡效果
-    // pixels = rgbSplit(pixels); // 色彩分離
+    pixels = redEffect(pixels); // 紅色濾鏡效果
+    pixels = rgbSplit(pixels); // 色彩分離
      pixels = greenScreen(pixels); // 綠幕
     // 置入效果
     ctx.putImageData(pixels, 0, 0);

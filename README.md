@@ -12,8 +12,8 @@
 
 练习注意
 
-- 练习前把index-START.html的代码粘过来即可 
-- index-billSu.html包含了我根据前辈笔记标注的注释&自己的思考 比较齐全
+- 练习前把index-START.html的代码粘过来即可 d
+- index-billSu.html包含了我根据前辈笔记标注的注释&自己的思考 比较齐全🧐
 
 
 
@@ -230,7 +230,7 @@ https://fangzhousu.github.io/JS-30Demos/16_Mouse-Move-Shadow/index-billSu.html
 
 https://fangzhousu.github.io/JS-30Demos/17_Sort-Without-Articles/index-billSu.html
 
-
+![在这里插入图片描述](https://img-blog.csdnimg.cn/9eacab29cd4944178ddf2bc4f8cf21f8.png)
 
 ## Demo18 
 
@@ -241,3 +241,16 @@ https://fangzhousu.github.io/JS-30Demos/17_Sort-Without-Articles/index-billSu.ht
 果然好多API是要多用才能熟练嘛😄
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/b038a7ea0ea84417918ab637930bc04c.png)
+
+
+
+## Demo19
+
+[效果展示](https://fangzhousu.github.io/JS-30Demos/19_Webcam-Fun/index-billSu.html)
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/d10a04d5df644c808181e6f6d1af19d2.png)
+
+## Demo20
+
+[效果展示](https://fangzhousu.github.io/JS-30Demos/20_Speech-Detection/index-billSu.html)
+

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Get User Media Code Along! | by billSu</title>
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <link rel="shortcut icon" href="../favicon.ico">
+</head>
+<body>
+    <style>
+        .billSu-header {
+        /* 改了一下头部的样式 保证它一直贴在最上面 */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgb(21, 21, 21);
+            text-align: center;
+            padding: 10px;
+            color: #dde666;
+            font-size: 20px;
+            /* font-weight: bold; */
+            z-index: 999;
+        }
+        .billSu-header span{
+            margin: 0 5px;
+        }
+        .billSu-header a{
+            text-decoration: none;
+            color: unset;
+        }
+        a:hover{
+            background-color:rgb(116, 116, 116);
+        }
+        button{
+            margin-top: 3rem;
+        }
+    </style>
+    
+    <div class="billSu-header">
+        <span><a href="https://github.com/wesbos/JavaScript30" target="_blank">JavaScript30 灵感来源</a></span>
+        <span>|</span>
+        <span><a href="https://github.com/FangzhouSu/JS-30Demos" target="_blank">本项目仓库-billSU</a></span>
+        <span>|</span>
+        <span><a href="https://blog.csdn.net/qq_45704942?spm=1010.2135.3001.5421&type=blog" target="_blank">了解我</a></span>
+    </div>
+
+    <div class="photobooth">
+        <div class="controls">
+        <button onClick="takePhoto()">Take Photo</button>
+        <button onClick="savePhoto()">Save Photo</button>
+            <div class="rgb">
+                <label for="rmin">Red Min:</label>
+                <input type="range" min=0 max=255 name="rmin">
+                <label for="rmax">Red Max:</label>
+                <input type="range" min=0 max=255 name="rmax">
+
+                <br>
+
+                <label for="gmin">Green Min:</label>
+                <input type="range" min=0 max=255 name="gmin">
+                <label for="gmax">Green Max:</label>
+                <input type="range" min=0 max=255 name="gmax">
+
+                <br>
+
+                <label for="bmin">Blue Min:</label>
+                <input type="range" min=0 max=255 name="bmin">
+                <label for="bmax">Blue Max:</label>
+                <input type="range" min=0 max=255 name="bmax">
+            </div>
+        </div>
+        <div class="hasimg">
+            <p>照片区域：</p>
+            <canvas class="photo" height="200" width="300"></canvas>
+        </div>
+        <div class="hasimg">
+            <p>实时视频区域：</p>
+            <video class="player"></video>
+        </div>
+        <div class="hasimg">
+            <p>变色画布区域:</p>
+            <div class="strip">
+                <a href="">
+                <img alt="暂未保存图像" id='myimg'>
+                </a>
+            </div>
+        </div>
+    </div>
+
+        <canvas class="photo"></canvas>
+        <video class="player"></video>
+        <div class="strip"></div>
+    </div>
+
+    <audio class="snap" src="http://wesbos.com/demos/photobooth/snap.mp3" hidden></audio>
+
+    <script src="scripts-billSu.js"></script>
+
+</body>
+</html>
