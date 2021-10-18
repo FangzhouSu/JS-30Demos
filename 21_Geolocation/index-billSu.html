@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width">
 </head>
 <body>
+    <!-- 在手机浏览器上运行来判定方向，或者使用npm install + npm start启动服务器，
+        来获取经纬度啥的（据说因为电脑没有陀螺仪，所以没法有指南针的作用？）（可能会触发“非安全连接警告”XD) -->
     <style>
         .billSu-header {
         /* 改了一下头部的样式 保证它一直贴在最上面 */
@@ -95,7 +97,23 @@
         }
         /*Compass: https://thenounproject.com/search/?q=compass&i=592352*/
     </style>
-  <script>
-  </script>
+    <script>
+        const arrow = document.querySelector('.arrow');
+        const speed = document.querySelector('.speed-value');
+
+        // 使用watchPosition来取得使用者的地理位置以及海拔、速度
+        navigator.geolocation.watchPosition((data) => {
+            // 若成功取回，则会回传一组Position（这里定义名称为data）
+            console.log(data);
+            // 使用coords.speed取回速度（公尺/秒）
+            speed.textContent = data.coords.speed;
+            // 使用coords.heading获取方位，代表偏离北方的角度 0为整北，90为正东
+            arrow.style.transform = `rotate(${data.coords.heading}deg)`;
+        }, (err) => {
+            // 错误回传信息，比如没有取得定位授权
+            console.log(err);
+        })
+
+    </script>
 </body>
 </html>
