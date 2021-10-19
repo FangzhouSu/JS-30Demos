@@ -254,7 +254,9 @@ https://fangzhousu.github.io/JS-30Demos/17_Sort-Without-Articles/index-billSu.ht
 
 [效果展示](https://fangzhousu.github.io/JS-30Demos/20_Speech-Detection/index-billSu.html)
 
+木有效果呐！
 
+![image-20211019212922407](https://gitee.com/su-fangzhou/blog-image/raw/master/202110192129663.png)
 
 ## Demo21
 
