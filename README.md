@@ -248,7 +248,9 @@ https://fangzhousu.github.io/JS-30Demos/17_Sort-Without-Articles/index-billSu.ht
 
 [效果展示](https://fangzhousu.github.io/JS-30Demos/19_Webcam-Fun/index-billSu.html)
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/d10a04d5df644c808181e6f6d1af19d2.png)
+![image-20211020232535689](https://gitee.com/su-fangzhou/blog-image/raw/master/202110202325855.png)
+
+
 
 ## Demo20
 
@@ -268,6 +270,16 @@ https://fangzhousu.github.io/JS-30Demos/17_Sort-Without-Articles/index-billSu.ht
 
 
 
+
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/04f339cc74884bcfaff973216f1b9f32.png)
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/a4c604a7d11b4a7a945cbee9f570d521.png)
+
+
+
+## Demo22
+
+[效果展示](https://fangzhousu.github.io/JS-30Demos/22 - Follow Along Link Highlighter/index-billSu.html)
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/f5c1feadb31e4b60ba10a696a01f5a38.png)

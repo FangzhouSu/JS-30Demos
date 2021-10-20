@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>👀👀👀Follow Along Nav | by billSu</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="../favicon.ico">
+</head>
+<body>
+    <style>
+        .billSu-header {
+        /* 改了一下头部的样式 保证它一直贴在最上面 */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgb(21, 21, 21);
+            text-align: center;
+            padding: 10px;
+            color: #dde666;
+            font-size: 20px;
+            /* font-weight: bold; */
+            z-index: 999;
+        }
+        .billSu-header span{
+            margin: 0 5px;
+        }
+        .billSu-header a{
+            text-decoration: none;
+            color: unset;
+        }
+        .billSu-header a:hover{
+            background-color:rgb(116, 116, 116);
+        }
+        button{
+            margin-top: 3rem;
+        }
+    </style> 
+  
+    <div class="billSu-header">
+        <span><a href="https://github.com/wesbos/JavaScript30" target="_blank">JavaScript30 灵感来源</a></span>
+        <span>|</span>
+        <span><a href="https://github.com/FangzhouSu/JS-30Demos" target="_blank">本项目仓库-billSU</a></span>
+        <span>|</span>
+        <span><a href="https://blog.csdn.net/qq_45704942?spm=1010.2135.3001.5421&type=blog" target="_blank">了解我</a></span>
+    </div>
+
+    <nav>
+      <ul class="menu">
+        <li><a href="">Home</a></li>
+        <li><a href="">Order Status</a></li>
+        <li><a href="">Tweets</a></li>
+        <li><a href="">Read Our History</a></li>
+        <li><a href="">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <div class="wrapper">
+      <p>Lorem ipsum dolor sit amet, <a href="">consectetur</a> adipisicing elit. Est <a href="">explicabo</a> unde natus necessitatibus esse obcaecati distinctio, aut itaque, qui vitae!</p>
+      <p>Aspernatur sapiente quae sint <a href="">soluta</a> modi, atque praesentium laborum pariatur earum <a href="">quaerat</a> cupiditate consequuntur facilis ullam dignissimos, aperiam quam veniam.</p>
+      <p>Cum ipsam quod, incidunt sit ex <a href="">tempore</a> placeat maxime <a href="">corrupti</a> possimus <a href="">veritatis</a> ipsum fugit recusandae est doloremque? Hic, <a href="">quibusdam</a>, nulla.</p>
+      <p>Esse quibusdam, ad, ducimus cupiditate <a href="">nulla</a>, quae magni odit <a href="">totam</a> ut consequatur eveniet sunt quam provident sapiente dicta neque quod.</p>
+      <p>Aliquam <a href="">dicta</a> sequi culpa fugiat <a href="">consequuntur</a> pariatur optio ad minima, maxime <a href="">odio</a>, distinctio magni impedit tempore enim repellendus <a href="">repudiandae</a> quas!</p>
+    </div>
+
+  <script>
+    // 01 这是一个很好的 使用JS给元素加背景 的方法呐~ 之前一直都是用hover的说~
+    // DOM操作需要很熟练！
+    // 取得HTML中所有a元素
+    const triggers = document.querySelectorAll('a');
+    // 建立一个span元素来放置highlight效果
+    const highlight = document.createElement('span');
+    highlight.classList.add('highlight');
+    // 将建立的span加到页面中
+    document.body.append(highlight);
+
+    // 02 滑鼠移入的回调函数！
+    function highlightLink(){
+        // 取得this（在本例中 由于是a调用了回调函数 所以这里的this指向a元素）的信息
+        const linkCoords = this.getBoundingClientRect();
+        // 建立一个coords对象来存储会使用的宽高、定位信息
+        const cords = {
+            width: linkCoords.width,
+            height: linkCoords.height,
+            left: linkCoords.left + window.scrollX,
+            top: linkCoords.top + window.scrollY
+        }
+        // 设定highlight效果的宽高与定位
+        highlight.style.width = `${cords.width}px`;
+        highlight.style.height = `${cords.height}px`;
+        highlight.style.transform = `translate(${cords.left}px, ${cords.top}px)`;
+    }
+
+    // 03 监听滑鼠移入
+    triggers.forEach(a => a.addEventListener('mouseenter', highlightLink));
+  </script>
+</body>
+</html>
+
