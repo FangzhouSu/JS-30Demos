@@ -256,7 +256,7 @@ https://fangzhousu.github.io/JS-30Demos/17_Sort-Without-Articles/index-billSu.ht
 
 [效果展示](https://fangzhousu.github.io/JS-30Demos/20_Speech-Detection/index-billSu.html)
 
-木有效果呐！
+木有效果呐！（也许是因为google提供的API我这里拿不到？也许是因为有安全问题？试了几个版本的代码都不行呐！）
 
 ![image-20211019212922407](https://gitee.com/su-fangzhou/blog-image/raw/master/202110192129663.png)
 
@@ -267,8 +267,6 @@ https://fangzhousu.github.io/JS-30Demos/17_Sort-Without-Articles/index-billSu.ht
 效果图这里直接参考 GuahSu前辈的gif了
 
 ![img](https://guahsu.io/2017/10/JavaScript30-21-Geolocation/demo21.gif)
-
-
 
 
 
@@ -283,3 +281,11 @@ https://fangzhousu.github.io/JS-30Demos/17_Sort-Without-Articles/index-billSu.ht
 [效果展示](https://fangzhousu.github.io/JS-30Demos/22 - Follow Along Link Highlighter/index-billSu.html)
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/f5c1feadb31e4b60ba10a696a01f5a38.png)
+
+## Demo23
+
+[效果展示](https://fangzhousu.github.io/JS-30Demos/23_Speech-Synthesis/index-billSu.html)
+
+![image-20211025215432663](https://gitee.com/su-fangzhou/blog-image/raw/master/202110252154821.png)
+
+奇怪的浏览器API使用经历又增加了！这回是阅读器相关内容，感觉在无障碍阅读上可能会有比较多的应用！

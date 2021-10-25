@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Speech Synthesis | by billSu</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="../favicon.ico">
+</head>
+<body>
+    <style>
+        body{
+          margin-top: 4rem;
+        }
+        .billSu-header {
+        /* 改了一下头部的样式 保证它一直贴在最上面 */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgb(21, 21, 21);
+            text-align: center;
+            padding: 10px;
+            color: #dde666;
+            font-size: 20px;
+            /* font-weight: bold; */
+            z-index: 999;
+        }
+        .billSu-header span{
+            margin: 0 5px;
+        }
+        .billSu-header a{
+            text-decoration: none;
+            color: unset;
+        }
+        .billSu-header a:hover{
+            background-color:rgb(116, 116, 116);
+        }
+        button{
+            margin-top: 3rem;
+        }
+    </style> 
+  
+    <div class="billSu-header">
+        <span><a href="https://github.com/wesbos/JavaScript30" target="_blank">JavaScript30 灵感来源</a></span>
+        <span>|</span>
+        <span><a href="https://github.com/FangzhouSu/JS-30Demos" target="_blank">本项目仓库-billSU</a></span>
+        <span>|</span>
+        <span><a href="https://blog.csdn.net/qq_45704942?spm=1010.2135.3001.5421&type=blog" target="_blank">了解我</a></span>
+    </div>
+
+    <div class="voiceinator">
+      
+      <h1>The Voiceinator 5000</h1>
+      <!-- 选择语言 -->
+      <select name="voice" id="voices">
+        <option value="">Select A Voice</option>
+      </select>
+      <!-- 语速和音调的调节 -->
+      <label for="rate">Rate:</label>
+      <input name="rate" type="range" min="0" max="3" value="1" step="0.1">
+
+      <label for="pitch">Pitch:</label>
+      <input name="pitch" type="range" min="0" max="2" step="0.1">
+
+      <!-- 多行文本输入框中的内容将被读出来 -->
+      <textarea name="text">Hello! I love JavaScript 👍</textarea>
+      <button id="stop">Stop!</button>
+      <button id="speak">Speak</button>
+
+    </div>
+
+<script>
+  // 01 取得页面元素 
+  const msg = new SpeechSynthesisUtterance();
+  let voices = [];
+  const voicesDropdown = document.querySelector('[name="voice"]');
+  const options = document.querySelectorAll('[type="range"], [name="text"]');
+  const speakButton = document.querySelector('#speak');
+  const stopButton = document.querySelector('#stop');
+  // 02 获取多行文本输入框中的内容,将这些内容赋给SpeechSynthesisUtterance对象
+  msg.text = document.querySelector('[name="text"]').value
+
+  // 03 获取支持语言并添加至下拉列表
+  function populateVoices(){
+    voices = this.getVoices();
+    console.log(voices);// 打印出来支持的所有语言
+    // 将所有语系放到下拉选单voicesDropdown中
+    voicesDropdown.innerHTML = voices
+      // 使用filter筛选出包含zh以及en的语系
+      .filter(voice => voice.lang.includes('zh') || voice.lang.includes('en'))
+      // 筛选后的array透过map把资料组成html
+      .map(voice => `<option value=${voice.name}>${voice.name}(${voice.lang})</option>`)
+      // 用join来合并且消除原本数组的逗号
+      .join('')
+  }
+
+  // 03 切换播放
+  function toggle(starOver = true){
+    speechSynthesis.cancel();
+    if(starOver){
+      speechSynthesis.speak(msg);
+    }
+  }
+
+  // 04 设定选择的发音语言
+  function setVoice(){
+    msg.voice = voices.find(voice => voice.name === this.value);
+    toggle();
+  }
+
+  // 05 设定语速和音调
+  function setOption(){
+    console.log("xx");
+    // 传入的参数名称与SpeechSynthesisUtterance本身的物件相同
+    // 所以可以直接使用setOption来设定实例对象msg的速率&音调
+    msg[this.name] = this.value;
+    console.log(this.name,this.value);
+    toggle();
+   
+  }
+
+  // 06 监听事件发生并调用对应的回调函数
+    // 监听语言清单的变更，更新语系清单
+  speechSynthesis.addEventListener('voiceschanged', populateVoices);
+    // 监听语系选单，选择后调用setVoice选择发音的语言
+  voicesDropdown.addEventListener('change', setVoice);
+    // 监听速率&音调的控制条（type=range）拖动控制条后实时进行设定
+  options.forEach(option => option.addEventListener('change', setOption));
+    // 播放按钮
+  speakButton.addEventListener('click', toggle);
+    // 停止按钮
+  stopButton.addEventListener('click', () => toggle(false));
+
+</script>
+
+</body>
+</html>
