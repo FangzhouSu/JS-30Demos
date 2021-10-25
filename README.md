@@ -164,6 +164,12 @@ https://fangzhousu.github.io/JS-30Demos/11_Custom-Video-Player/index-billSu.html
 
 接触了新的玩法~从其他网站引入API来达成某种效果（不用自己写回调函数了哦耶）
 
+> 21/10/25 更：这个API只能在本地被调用XD
+>
+> 详情看报错——
+>
+> ![image-20211025221213888](https://gitee.com/su-fangzhou/blog-image/raw/master/202110252212937.png)
+
 https://fangzhousu.github.io/JS-30Demos/12_Key-Sequence-Detection/index-billSu.html
 
 另外今天这个demo要分成两幅图 才能更好地看效果了XD
