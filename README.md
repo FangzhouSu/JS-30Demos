@@ -278,7 +278,7 @@ https://fangzhousu.github.io/JS-30Demos/17_Sort-Without-Articles/index-billSu.ht
 
 ## Demo22
 
-[效果展示](https://fangzhousu.github.io/JS-30Demos/22 - Follow Along Link Highlighter/index-billSu.html)
+[效果展示](https://fangzhousu.github.io/JS-30Demos/22-Follow Along Link Highlighter/index-billSu.html)
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/f5c1feadb31e4b60ba10a696a01f5a38.png)
 
