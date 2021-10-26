@@ -9,6 +9,8 @@
 > 2021-10-4
 
 # 我的学习感悟
+> 踩坑记录：最开始教程中使用的API是在一个使用HTTP协议的网站上，而我们的网页部署在Github Page上，是使用的HTTPS协议😂😢😢所以用不了这个API（the content must be served over HTTPS.）
+> 所以我尝试将协议改为HTTPS，最终可以正常使用API ——cornify_add方法
 
 - 今天这个很好玩！和在游戏里面输入“秘籍”一个效果
   - 规定了一个“暗号” 当输入暗号之后 生成一个特效
