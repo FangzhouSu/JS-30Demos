@@ -1,3 +1,6 @@
+> 11/8 解析addEventListener中事件的捕捉、转递、冒泡、单次執行方法，是对事件的一次绝佳实践！
+> 使用 e.stopPropagation(); 阻止冒泡！
+> 另外step3 step5中提到了addEventListener的第三个参数的两个属性capture once，用于设定事件捕获顺序&阻止冒泡~可以改一改值来试下！
 # 25 - Event Capture, Propagation, Bubbling and Once
 
 ## **主題**

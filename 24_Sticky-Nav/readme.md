@@ -1,3 +1,5 @@
+> 11/8 JS30demos还没做完呐！赶紧从Vue开发的大项目里抽空回来搞一搞~
+> 这个demo的内容中CSS文件中的变化起到了比较关键的作用~
 # 24 - Sticky Nav
 
 ![](https://guahsu.io/2017/10/JavaScript30-24-Sticky-Nav/demo24.gif)

@@ -12,7 +12,7 @@
 
 练习注意
 
-- 练习前把index-START.html的代码粘过来即可 d
+- 练习前把index-START.html的代码粘过来即可 
 - index-billSu.html包含了我根据前辈笔记标注的注释&自己的思考 比较齐全🧐
 
 
@@ -170,6 +170,10 @@ https://fangzhousu.github.io/JS-30Demos/11_Custom-Video-Player/index-billSu.html
 >
 > ![image-20211025221213888](https://gitee.com/su-fangzhou/blog-image/raw/master/202110252212937.png)
 
+> 21/10/26更：将引入的脚本所处网站的协议改为https即可！
+>
+> ![image-20211026093331303](https://gitee.com/su-fangzhou/blog-image/raw/master/202110260933505.png)
+
 https://fangzhousu.github.io/JS-30Demos/12_Key-Sequence-Detection/index-billSu.html
 
 另外今天这个demo要分成两幅图 才能更好地看效果了XD
@@ -295,3 +299,50 @@ https://fangzhousu.github.io/JS-30Demos/17_Sort-Without-Articles/index-billSu.ht
 ![image-20211025215432663](https://gitee.com/su-fangzhou/blog-image/raw/master/202110252154821.png)
 
 奇怪的浏览器API使用经历又增加了！这回是阅读器相关内容，感觉在无障碍阅读上可能会有比较多的应用！
+
+## Demo24
+
+[效果展示](https://fangzhousu.github.io/JS-30Demos/24_Sticky-Nav/index-billSu.html)
+
+![image-20211108211736251](https://gitee.com/su-fangzhou/blog-image/raw/master/202111082117396.png)
+
+
+
+## Demo25
+
+[效果展示](https://fangzhousu.github.io/JS-30Demos/25_Event-Capture-Propagation-Bubbling-and-Once/index-billSu.html)
+
+![JS30-25](https://gitee.com/su-fangzhou/blog-image/raw/master/202111082227307.gif)
+
+对JavaScript事件的感触更深勒！
+
+了解了`addEventListener`的第三个属性中的一些内容
+
+## Demo26
+
+[效果展示](https://fangzhousu.github.io/JS-30Demos/26_Stripe-Follow-Along-Nav/index-billSu.html)
+
+
+
+## Demo27
+
+[效果展示](https://fangzhousu.github.io/JS-30Demos/27_Click-and-Drag/index-billSu.html)
+
+
+
+## Demo28
+
+[效果展示](https://fangzhousu.github.io/JS-30Demos/28_Video-Speed-Controller/index-billSu.html)
+
+
+
+## Demo29
+
+[效果展示](https://fangzhousu.github.io/JS-30Demos/29_Countdown_Timer/index-billSu.html)
+
+
+
+## Demo30
+
+[效果展示](https://fangzhousu.github.io/JS-30Demos/30_Whack-A-Mole/index-billSu.html)
+

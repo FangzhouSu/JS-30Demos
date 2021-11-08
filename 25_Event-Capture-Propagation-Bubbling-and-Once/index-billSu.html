@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Understanding JavaScript's Capture</title>
+  <link rel="shortcut icon" href="../favicon.ico">
+</head>
+<body class="bod">
+    <style>
+        body{
+          margin-top: 4rem;
+        }
+        .billSu-header {
+        /* 改了一下头部的样式 保证它一直贴在最上面 */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgb(21, 21, 21);
+            text-align: center;
+            padding: 10px;
+            color: #dde666;
+            font-size: 20px;
+            /* font-weight: bold; */
+            z-index: 999;
+        }
+        .billSu-header span{
+            margin: 0 5px;
+        }
+        .billSu-header a{
+            text-decoration: none;
+            color: unset;
+        }
+        .billSu-header a:hover{
+            background-color:rgb(116, 116, 116);
+        }
+        button{
+            margin-top: 3rem;
+        }
+    </style> 
+  
+    <div class="billSu-header">
+        <span><a href="https://github.com/wesbos/JavaScript30" target="_blank">JavaScript30 灵感来源</a></span>
+        <span>|</span>
+        <span><a href="https://github.com/FangzhouSu/JS-30Demos" target="_blank">本项目仓库-billSU</a></span>
+        <span>|</span>
+        <span><a href="https://blog.csdn.net/qq_45704942?spm=1010.2135.3001.5421&type=blog" target="_blank">了解我</a></span>
+    </div>
+  <div class="one">
+    <div class="two">
+      <div class="three">
+      </div>
+    </div>
+  </div>
+
+<style>
+  html {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after { box-sizing: inherit; }
+
+  div {
+    width:100%;
+    padding:100px;
+  }
+
+  .one {
+    background: thistle;
+  }
+
+  .two {
+    background:mistyrose;
+  }
+
+  .three {
+    background:coral;
+  }
+</style>
+
+<h4>冒泡：点击最内层输出321 次外层21 最外层1</h4>
+<h4>阻止冒泡之后：点击最内层输出3 次外层2 最外层1</h4>
+<button>点击事件最多触发一次！（用于禁止用户重复点击）</button>
+<script>
+    const divs = document.querySelectorAll('div');
+    const button = document.querySelector('button');
+    // 打印出该层级的class类属性值
+    function logText(e){
+        console.log(this.classList.value);
+        e.stopPropagation();// 阻止冒泡事件~
+        // console.log(this);
+    }
+    divs.forEach(div => div.addEventListener('click', logText, {
+        capture: false,
+        // once: true;// 让点击事件只能被监听到一次！
+    }));
+    // 使用addEventListener的第3个属性-once
+    button.addEventListener('click', () => {
+        console.log('我被点了&我只能被点这一下哦！都怪once那个属性！');
+    }, {
+        once: true// 顾名思义，once为true，“只能点一次”是真的~
+    })
+</script>
+</body>
+</html>
