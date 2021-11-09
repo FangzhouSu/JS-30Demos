@@ -45,7 +45,7 @@
         <span>|</span>
         <span><a href="https://blog.csdn.net/qq_45704942?spm=1010.2135.3001.5421&type=blog" target="_blank">了解我</a></span>
     </div>
-  <h2>Cool</h2>
+  <h2>Chasing for those great offers!🎉</h2>
   <nav class="top">
     <div class="dropdownBackground">
       <span class="arrow"></span>
@@ -56,13 +56,13 @@
         <a href="#">About Me</a>
         <div class="dropdown dropdown1">
           <div class="bio">
-            <img src="https://logo.clearbit.com/wesbos.com">
-            <p>Wes Bos sure does love web development. He teaches things like JavaScript, CSS and BBQ. Wait. BBQ isn't part of web development. It should be though!</p>
+            <img src="https://avatars.githubusercontent.com/u/75036021?v=4" style="width: 50%;">
+            <p>这里是bill，一个热爱前端开发的小提琴手🎻求个offer（可怜巴巴</p>
           </div>
         </div>
       </li>
       <li>
-        <a href="#">Courses</a>
+        <a href="#">优秀的编程学习资源~</a>
         <ul class="dropdown courses">
           <li>
             <span class="code">RFB</span>
@@ -97,10 +97,9 @@
       <li>
         <a href="#">Other Links</a>
         <ul class="dropdown dropdown3">
-          <li><a class="button" href="http://twitter.com/wesbos">Twiter</a></li>
-          <li><a class="button" href="http://facebook.com/wesbos.developer">Facebook</a></li>
-          <li><a class="button" href="http://wesbos.com">Blog</a></li>
-          <li><a class="button" href="http://wesbos.com/courses">Course Catalog</a></li>
+          <li><a class="button" href="https://blog.csdn.net/qq_45704942?spm=1010.2135.3001.5421&type=blog">CSDN</a></li>
+          <li><a class="button" href="https://github.com/FangzhouSu">Github</a></li>
+          <li><a class="button" href="https://juejin.cn/user/18064101621133">JueJin</a></li>
         </ul>
       </li>
     </ul>
@@ -117,11 +116,16 @@
   body {
     margin: 0;
     min-height: 100vh;
-    background:
+    /* background:
       linear-gradient(45deg, hsla(340, 100%, 55%, 1) 0%, hsla(340, 100%, 55%, 0) 70%),
       linear-gradient(135deg, hsla(225, 95%, 50%, 1) 10%, hsla(225, 95%, 50%, 0) 80%),
       linear-gradient(225deg, hsla(140, 90%, 50%, 1) 10%, hsla(140, 90%, 50%, 0) 80%),
-      linear-gradient(315deg, hsla(35, 95%, 55%, 1) 100%, hsla(35, 95%, 55%, 0) 70%);
+      linear-gradient(315deg, hsla(35, 95%, 55%, 1) 100%, hsla(35, 95%, 55%, 0) 70%); */
+    /* 作者调的颜色很好看，但是... */
+    background: url(../ByteDance-3.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    
   }
 
   h2 {
@@ -254,6 +258,50 @@
 </style>
 
 <script>
+  // 复习下子选择器~选择父元素.cool下的所有子元素li
+  const triggers = document.querySelectorAll('.cool > li');
+  const background  = document.querySelector('.dropdownBackground');
+  const nav  = document.querySelector('.top');
+  // 滑鼠移入事件
+  function handleEnter() {
+    // 替觸發的li加上一個class作為標示已移入
+    this.classList.add('trigger-enter');
+    // 當移入時，先檢查是否有trigger-enter這個className
+    // 若有的話在150毫秒後新增trigger-enter-active這個class
+    setTimeout(() => this.classList.contains('trigger-enter') && this.classList.add('trigger-enter-active'), 150);
+    // 新增open這個class
+    background.classList.add('open');
+    // 取得滑入元素底下的dropdown
+    const dropdown = this.querySelector('.dropdown');
+    // 取得這個dropdown的定位與大小資訊
+    const dropdownCoords = dropdown.getBoundingClientRect();
+    // 取得nav的定位與大小資訊
+    const navCoords = nav.getBoundingClientRect();
+
+    // 設定將要給白色滑動背景使用的定位與大小資訊
+    const coords =
+   {
+      height: dropdownCoords.height,
+      width: dropdownCoords.width,
+      // 要減去nav的定位，避免上方區塊增加時造成的錯位
+      top: dropdownCoords.top - navCoords.top,
+      left: dropdownCoords.left - navCoords.left
+    };
+
+    // 設定白色滑動背景的定位與大小
+    background.style.setProperty('width', `${coords.width}px`);
+    background.style.setProperty('height', `${coords.height}px`);
+    background.style.setProperty('transform', `translate(${coords.left}px, ${coords.top}px)`);
+  }
+// 滑鼠移出事件
+function handleLeave() {
+  this.classList.remove('trigger-enter', 'trigger-enter-active');
+  background.classList.remove('open');
+}
+
+// 為每個選單加上滑鼠移入/移出事件監聽
+triggers.forEach(trigger => trigger.addEventListener('mouseenter', handleEnter));
+triggers.forEach(trigger => trigger.addEventListener('mouseleave', handleLeave));
 </script>
 
 </body>

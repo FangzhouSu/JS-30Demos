@@ -1,3 +1,15 @@
+> 11/9
+
+![](https://gitee.com/su-fangzhou/blog-image/raw/master/202111092324860.png)
+
+# 我的心得
+
+> 唉呀！好巧！昨天还在想怎么实现一个鼠标悬停在标签上获得可以点击的悬浮框，今天就刷到勒这个！做ta！
+
+- 很有趣的DOM操作！回头还要再敲一遍（最近时间太紧张咯没仔细看！）
+- 移入：关键是监听事件的发生并给DOM元素`.classList.add(‘具体属性’)`
+- 移出： `.classList.remove(‘具体属性1’,'具体属性2')`
+
 # 26 - Stripe Follow Along Nav
 
 ![](https://guahsu.io/2017/10/JavaScript30-26-Stripe-Follow-Along-Nav/demo26.gif)
@@ -14,6 +26,7 @@
 ### Step1. 取得頁面元素與建立基本事件框架
 取得頁面元素並分析此次效果僅有兩個事件`mouseenter`與`mouseleave`，  
 確定好知道目前要做的範圍，就先把`function`框建立好。
+
 ```javascript
 // 頁面元素取得
 const triggers = document.querySelectorAll('.cool > li');
@@ -67,7 +80,7 @@ function handleEnter() {
     background.style.setProperty('height', `${coords.height}px`);
     background.style.setProperty('transform', `translate(${coords.left}px, ${coords.top}px)`);
 }
-  ```
+```
 
 ### Step3. 撰寫移出事件
 簡單的移除被加上的class：
@@ -81,6 +94,7 @@ function handleLeave() {
 ## 其他
 利用JS取得定位及大小資訊，並在適時置入對應元素中，  
 產生的動畫效果還得靠CSS，這練習主要是靠這兩個來產生效果:
+
 ```css
 .dropdownBackground {
   width: 100px;
