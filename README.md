@@ -322,13 +322,11 @@ https://fangzhousu.github.io/JS-30Demos/17_Sort-Without-Articles/index-billSu.ht
 
 [效果展示](https://fangzhousu.github.io/JS-30Demos/26_Stripe-Follow-Along-Nav/index-billSu.html)
 
-![image-20211109232413859](https://gitee.com/su-fangzhou/blog-image/raw/master/202111092324860.png)
+![image-20211110151318894](https://gitee.com/su-fangzhou/blog-image/raw/master/202111101513042.jpg)
 
 ## Demo27
 
 [效果展示](https://fangzhousu.github.io/JS-30Demos/27_Click-and-Drag/index-billSu.html)
-
-
 
 ## Demo28
 

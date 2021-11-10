@@ -1,6 +1,28 @@
-> 11/8 解析addEventListener中事件的捕捉、转递、冒泡、单次執行方法，是对事件的一次绝佳实践！
-> 使用 e.stopPropagation(); 阻止冒泡！
-> 另外step3 step5中提到了addEventListener的第三个参数的两个属性capture once，用于设定事件捕获顺序&阻止冒泡~可以改一改值来试下！
+> 11/8 
+![demo25-new](https://gitee.com/su-fangzhou/blog-image/raw/master/202111101735786.gif)
+
+上面这个太大了 可以点到链接里去看/直接点开demo体验
+
+下面这个是老版本哈~
+
+![JS30-25](https://gitee.com/su-fangzhou/blog-image/raw/master/202111101735829.gif)
+
+# 我的感悟
+
+- 解析`addEventListener`中事件的捕捉、转递、冒泡、单次執行方法，是对事件的一次绝佳实践！
+- 使用 `e.stopPropagation();` 阻止冒泡！
+- 另外step3 step5中提到了`addEventListener`的第三个参数的两个属性capture once，用于设定事件捕获顺序&阻止冒泡~可以改一改值来试下！
+
+> 11/9更新
+
+观[demo](https://www.w3school.com.cn/tiy/t.asp?f=event_stoppropagation)有感~添加了新功能与新知识点！（即为打勾的地方）
+
+![image-20211110172832925](https://gitee.com/su-fangzhou/blog-image/raw/master/202111101728030.png)
+
+也碰到了**新问题**！
+
+- 利用复选框【1】更新checked的值（决定事件是为捕获还是冒泡）这里有一个很大的疑惑点！！在更新全局的checked值时，`divs.forEach(div => div.addEventListener())`中第三个参数中的checked是不受影响的，它只受初始定义的checked变量影响！问题留在这儿，等回头遇到类似的问题/看看[官方文档](https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener)再来补充
+
 # 25 - Event Capture, Propagation, Bubbling and Once
 
 ## **主題**
@@ -40,7 +62,7 @@ divs.forEach(div => div.addEventListener('click', logText));
 three
 two
 one
-```  
+```
 會從`click`的位置的最深處開始向外層連動所有的div`click`事件，像是氣泡一樣的從內向外浮出去。
 
 ### Step3. addEventListener的第三個參數-1:capture

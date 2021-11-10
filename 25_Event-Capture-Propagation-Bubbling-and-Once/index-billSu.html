@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<br lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Understanding JavaScript's Capture</title>
   <link rel="shortcut icon" href="../favicon.ico">
 </head>
-<body class="bod">
+<br class="bod">
     <style>
         body{
           margin-top: 4rem;
@@ -35,7 +35,7 @@
             background-color:rgb(116, 116, 116);
         }
         button{
-            margin-top: 3rem;
+            margin-top: 10px;
         }
     </style> 
   
@@ -46,9 +46,24 @@
         <span>|</span>
         <span><a href="https://blog.csdn.net/qq_45704942?spm=1010.2135.3001.5421&type=blog" target="_blank">了解我</a></span>
     </div>
+
+  <h3>下面的内容可以自己点一点然后在控制台里看一看~</h3>
+  <h4>冒泡（默认）：事件从最内层的元素开始发生，扩散开来地传播，直到document对象。点击最内层依次输出321 次外层21 最外层1</h4>
+  <p>p元素上发生click事件的顺序应该是p -> body -> html -> document</p>
+  <h4>捕获：事件从最外层的元素开始发生，扩散开来地传播，直到点击的那个具体元素。点击最内层依次输出123 次外层12 最外层1</h4>
+  <p>p元素上发生click事件的顺序应该是document -> html -> body -> div -> p</p>
+  <h4>阻止冒泡之后：点击最内层输出3 次外层2 最外层1</h4>
+  <input type="checkbox" id="choose">【1】点击复选框切换下方点击事件为冒泡/捕获！（默认为冒泡，选中后为捕获🧑‍💻）</br>
+  <p>上面的功能暂时有bug，想切换成事件捕获手动更改代码135行左右位置为true即可（addEventListener()的第三个参数）</p>
+  <input type="checkbox" id="check">【2】点击复选框阻止冒泡/捕获！</br>
+  <button>点击事件最多触发一次！（用于禁止用户重复点击😎）</button>
+  <a id="myLink" style="margin: 10px 0;display: block;" onclick="prevent(event)" href="https://github.com/FangzhouSu/JS-30Demos">我是一个失效的链接,被preventDefault()搞的！🧐</a>
   <div class="one">
+    1-外层
     <div class="two">
+      2-次外层
       <div class="three">
+        3-最内层
       </div>
     </div>
   </div>
@@ -77,28 +92,65 @@
   }
 </style>
 
-<h4>冒泡：点击最内层输出321 次外层21 最外层1</h4>
-<h4>阻止冒泡之后：点击最内层输出3 次外层2 最外层1</h4>
-<button>点击事件最多触发一次！（用于禁止用户重复点击）</button>
+
 <script>
     const divs = document.querySelectorAll('div');
     const button = document.querySelector('button');
-    // 打印出该层级的class类属性值
-    function logText(e){
-        console.log(this.classList.value);
-        e.stopPropagation();// 阻止冒泡事件~
-        // console.log(this);
+    // 加一条：阻止冒泡的启动开关~~
+    const check = document.querySelector('#check');
+    // 再加一条，被禁止跳转的链接
+    const link = document.querySelector('#myLink')
+    // 再再加一条，切换事件流为捕获事件~
+    const choose = document.querySelector('#choose');
+    console.log("checked的值（决定事件是为捕获还是冒泡）这里有一个很大的疑惑点！！在更新全局的checked值时，这里是不受影响的！问题留在这儿，等回头遇到类似的问题/看看官方文档再来补充");
+
+    let checked = true;
+    // 01 如果勾选复选框1号则切换事件流为捕获事件~
+    function change(){
+      if(choose.checked){
+        checked = true;
+        console.log("切换为事件捕获", checked);
+      }
+      else{
+        checked = false;
+        console.log("切换为事件冒泡");
+      }
     }
-    divs.forEach(div => div.addEventListener('click', logText, {
-        capture: false,
-        // once: true;// 让点击事件只能被监听到一次！
-    }));
-    // 使用addEventListener的第3个属性-once
+    choose.addEventListener('click', change)
+    // 01 如果勾选复选框2号阻止所有元素的事件冒泡~
+    divs.forEach(div => div.addEventListener('click', (e) => {
+      if(check.checked){
+        // 如果被点击，则启动阻止冒泡模式~
+        e.stopPropagation();
+        console.log("哦耶！捕获/冒泡被阻止了！")
+      }
+      
+      console.log(div);// 这里的this是全局的window哦~
+      console.log(div.classList.value);
+      }, 
+      // true// 第三个参数为true的话，事件流变为事件捕获，事件从最外层开始发生
+      
+      // checked的值这里有一个很大的疑惑点！！在更新全局的checked值时，这里是不受影响的！
+      // 问题暂时留在这儿 回头可以多读几遍官方文档！！
+      // checked ? {capture: true} : false // ？？？
+    ));
+
+    // 02 使用addEventListener的第3个属性-once 使点击只能进行一次
     button.addEventListener('click', () => {
         console.log('我被点了&我只能被点这一下哦！都怪once那个属性！');
     }, {
         once: true// 顾名思义，once为true，“只能点一次”是真的~
     })
+
+    // 03 使点击事件失效
+    // 这个其实就跟我们的主题没啥关系了！但是我还是想提一下~禁用事件挺有用的感觉！
+    function prevent(event){
+      event.preventDefault();
+      alert("行为默认的事件失效！");
+      console.log(`我的跳转链接本应该是${link}的！`);
+      console.log("这里好神奇..." + link + "和文字放在一起就会自动变为链接这个字符串，而单独打印会是这样：（这个应该是链接的特性！");
+      console.log(link);
+    }
 </script>
 </body>
 </html>
