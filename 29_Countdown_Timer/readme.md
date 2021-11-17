@@ -1,3 +1,13 @@
+> 21/11/17
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/63c055c39c3045d1a8995bf6cceda516.png)
+
+# 我的感悟
+
+> 用这个有趣且实用的demo结束我对JS30demos第一轮的学习！
+
+- 监听输入框的事件并赋予其回调函数时，使用了熟悉的 （demo26中刚刚提到嘿嘿）`e.preventDefault();` 阻止submit进行提交后默认进行的页面跳转~
+
 # 29 - Countdown Timer
 
 ![](https://guahsu.io/2017/11/JavaScript30-29-Countdown-Timer/demo29.png)

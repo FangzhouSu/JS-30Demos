@@ -1,8 +1,9 @@
 html {
   box-sizing: border-box;
   font-size: 10px;
-  background: #8E24AA;
-  background: linear-gradient(45deg,  #42a5f5 0%,#478ed1 50%,#0d47a1 100%);
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-image: url(../ByteDance.jpg)
 }
 
 *, *:before, *:after {

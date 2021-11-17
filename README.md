@@ -50,6 +50,8 @@
 
 # Demos
 
+项目笔记见文件夹~🧑‍💻
+
 ## Demo01
 
 https://fangzhousu.github.io/JS-30Demos/01_JS-Drum-Kit/index-billSu.html
@@ -326,21 +328,25 @@ https://fangzhousu.github.io/JS-30Demos/17_Sort-Without-Articles/index-billSu.ht
 
 ## Demo27
 
+> 暂且跳过这个例子咯
+
 [效果展示](https://fangzhousu.github.io/JS-30Demos/27_Click-and-Drag/index-billSu.html)
 
 ## Demo28
 
+> 暂且跳过这个例子咯
+
 [效果展示](https://fangzhousu.github.io/JS-30Demos/28_Video-Speed-Controller/index-billSu.html)
-
-
 
 ## Demo29
 
 [效果展示](https://fangzhousu.github.io/JS-30Demos/29_Countdown_Timer/index-billSu.html)
 
-
+![在这里插入图片描述](https://img-blog.csdnimg.cn/63c055c39c3045d1a8995bf6cceda516.png)
 
 ## Demo30
+
+> 暂且跳过这个例子咯
 
 [效果展示](https://fangzhousu.github.io/JS-30Demos/30_Whack-A-Mole/index-billSu.html)
 
